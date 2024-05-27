@@ -1,0 +1,102 @@
+/* Estilos para el header */
+header {
+  background-color: #a66e2900; /* Fondo completamente transparente */
+  color: #fff;
+  padding: 10px;
+  font-family: var(--primary-font-names), var(--secondary-font-names);
+  position: static;
+  width: 100%;
+  top: 0;
+  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+  display: flex; /* Usamos flexbox para ocupar todo el ancho y centrar el contenido */
+  justify-content: space-around; /* Alineamos los elementos del header */
+  align-items: center; /* Centramos verticalmente */
+  transition: background-color 0.5s, box-shadow 0.3s; /* Añade la transición para el sombreado */
+  box-shadow: 0 2px 4px #0000001a; /* Añade un leve sombreado */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+header.scrolled {
+  background-color: #a66e29;
+  box-shadow: 0 2px 4px #0000004d; /* Ajusta el sombreado cuando se hace scroll */
+}
+
+/* Estilos para el menú de navegación */
+nav {
+  margin-top: 10px;
+  position: relative;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-family: var(--secondary-font-names);
+}
+
+.logoFoto {
+  width: 9em; /* Tamaño del logo */
+}
+
+.user-panel {
+  position: relative; /* Ajustar la posición del panel de usuario */
+}
+
+.user-panel .options {
+  position: absolute; /* Posicionar el menú desplegable */
+  top: 100%; /* Colocar el menú justo debajo del botón */
+  right: 0; /* Alinear el menú a la derecha */
+  background-color: #000000cc; /* Fondo oscuro */
+  padding: 10px;
+  border-radius: 4px;
+  display: none; /* Ocultar el menú por defecto */
+}
+
+.user-panel .options a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+}
+
+.user-panel:hover .options {
+  display: block; /* Mostrar el menú al pasar el ratón sobre el botón */
+}
+
+
+
+/* Estilos para el acordeón */
+.navMenuAcordeon .acordeon-content {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .navMenuAcordeon .acordeon-content {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .menu-icon {
+    display: block;
+    text-align: center; /* Centra el checkbox */
+    margin-bottom: 10px; /* Agrega espacio entre el logo y el checkbox */
+  }
+
+  #menu-toggle:checked + nav {
+    display: flex;
+    flex-direction: column;
+    background-color: #a66e29;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+}

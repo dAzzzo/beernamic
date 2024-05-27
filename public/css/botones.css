@@ -1,0 +1,197 @@
+/* Estilos de los botones de la navbar */
+.box {
+  width: auto;
+  /* Ajustamos el ancho para que se adapte al contenido */
+  height: auto;
+  display: inline-block;
+  /* Cambiamos a inline-block para que esté en la misma línea */
+  transition: .5s linear;
+  position: relative;
+  overflow: hidden;
+  padding: 15px;
+  text-align: center;
+  margin: 0 5px;
+  background: transparent;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.box:before {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid transparent;
+  box-sizing: border-box;
+  transform: translateX(100%);
+}
+
+.box:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-top: 4px solid transparent;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  transform: translateX(-100%);
+}
+
+.box:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.box:hover:before {
+  border-color: #262626;
+  height: 100%;
+  transform: translateX(0);
+  transition: .3s transform linear, .3s height linear .3s;
+}
+
+.box:hover:after {
+  border-color: #262626;
+  height: 100%;
+  transform: translateX(0);
+  transition: .3s transform linear, .3s height linear .5s;
+}
+
+button {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: transparent;
+  vertical-align: middle;
+  /* Alineamos verticalmente con el contenido del header */
+}
+
+/* Estilos para el botón del carrito */
+.button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cart-icon {
+  width: 50px;
+  height: auto;
+}
+
+/* Restricciones de tamaño para el botón */
+@media (max-width: 768px) {
+  .button {
+    margin: 5px 0;
+  }
+}
+
+
+/* user panel del navbar */
+.user-panel {
+  position: relative;
+  display: inline-block;
+}
+
+.user-button {
+  width: auto;
+  height: auto;
+  display: inline-block;
+  transition: .5s linear;
+  position: relative;
+  overflow: hidden;
+  padding: 15px;
+  text-align: center;
+  margin: 0 5px;
+  background: transparent;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.user-button:before {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid transparent;
+  box-sizing: border-box;
+  transform: translateX(100%);
+}
+
+.user-button:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-top: 4px solid transparent;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  transform: translateX(-100%);
+}
+
+.user-button:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.user-button:hover:before {
+  border-color: #262626;
+  height: 100%;
+  transform: translateX(0);
+  transition: .3s transform linear, .3s height linear .3s;
+}
+
+.user-button:hover:after {
+  border-color: #262626;
+  height: 100%;
+  transform: translateX(0);
+  transition: .3s transform linear, .3s height linear .5s;
+}
+
+.options {
+  display: none;
+  position: absolute;
+  background-color: #A66E29;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.options button {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  text-align: left;
+  color: black;
+  border: none;
+  background-color: #A66E29;
+}
+
+.options button:hover {
+  background-color: #A66E29;
+}
+
+.user-panel:hover .options {
+  display: block;
+}

@@ -1,0 +1,65 @@
+.accordion {
+  width: 80%;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #f8f8f8; /* Color base */
+}
+
+.accordion__toggle {
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #f89b29; /* Color base */
+  color: #fff; /* Color de texto */
+}
+
+.accordion__content {
+  display: none;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.accordion__content a {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.accordion__content a img {
+  width: 100%;
+  max-width: 150px;
+  display: block;
+  margin: auto;
+}
+
+/* Media query para el acordeón */
+@media (min-width: 768px) {
+  .accordion__toggle::before {
+    content: "-";
+  }
+  .accordion__content.show {
+    display: block;
+  }
+  .accordion__toggle {
+    transition: all 0.3s ease;
+  }
+  .accordion__toggle.active {
+    background-color: #ccc; /* Color de fondo al abrir */
+  }
+  
+  /* Centrar las imágenes de dos en dos */
+  .accordion__content a:nth-child(odd) {
+    text-align: right;
+  }
+  
+  .accordion__content a:nth-child(even) {
+    text-align: left;
+  }
+  
+  /* Centrar la última imagen */
+  .accordion__content a:last-child {
+    text-align: center;
+  }
+}

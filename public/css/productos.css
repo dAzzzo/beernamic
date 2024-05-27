@@ -1,0 +1,154 @@
+body {
+    background-color: #F2C166;
+}
+
+/* Variables de tipografía */
+:root {
+    --primary-font-names: "", "Brewery";
+    --secondary-font-names: "", "PT Sans", sans-serif;
+    --tertiary-font-names: "", "Main", "PT Sans", serif;
+}
+
+/* Main */
+main{
+    margin-top: 5em;
+}
+
+
+
+/* Barra de busqueda  */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 80px;
+}
+
+.search-bar form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar form div {
+    margin-right: 10px;
+}
+
+.search-bar form label {
+    margin-right: 5px;
+}
+
+.search-bar form select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar form button {
+    padding: 5px 10px;
+    background-color: #A66E29;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar form button:hover {
+    background-color: #732002;
+}
+
+
+/* Productos */
+.productos {
+    text-align: center;
+    margin-bottom: 50px; 
+}
+
+.marca-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* .product {
+    margin: 10px;
+    cursor: pointer;
+} */
+
+/*  Seccion cruzcampo */
+.product-cruzcampo {
+    text-align: center;
+    width: 200px; /* ajusta el ancho según tu preferencia */
+    margin: 20px; /* ajusta el margen según tu preferencia */
+    display: inline-block;
+    border: 1px solid #ccc; /* opcional: añade un borde para resaltar la tarjeta */
+    padding: 10px; /* ajusta el relleno según tu preferencia */
+}
+
+.product-cruzcampo img {
+    width: 100%;
+    max-width: 150px; /* ajusta el tamaño según tu preferencia */
+    height: auto;
+}
+
+.product-cruzcampo p {
+    margin-top: 10px; /* ajusta el margen según tu preferencia */
+}
+
+
+/*  Seccion mahou */
+.product-mahou {
+    text-align: center;
+    width: 200px; /* ajusta el ancho según tu preferencia */
+    margin: 20px; /* ajusta el margen según tu preferencia */
+    display: inline-block;
+    border: 1px solid #ccc; /* opcional: añade un borde para resaltar la tarjeta */
+    padding: 10px; /* ajusta el relleno según tu preferencia */
+}
+
+.product-mahou img {
+    width: 100%;
+    max-width: 150px; /* ajusta el tamaño según tu preferencia */
+    height: auto;
+}
+
+.product-mahou p {
+    margin-top: 10px; /* ajusta el margen según tu preferencia */
+}
+
+
+
+/*  Seccion EG */
+.product-EG img {
+    max-width: 180px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 150px;
+}
+
+.product-EG-00 img {
+    max-width: 109px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 150px;
+    margin-top: 2em;
+}
+
+
+/*  Seccion Heineken */
+.product-heineken img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 100px;
+}
+
+/*  Seccion Alhambra */
+.product-alhambra img {
+    max-width: 180px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 180px;
+}
+

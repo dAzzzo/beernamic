@@ -1,0 +1,53 @@
+body {
+  background-color: #F2C166;
+  padding: 0;
+}
+
+
+
+/* Variables de tipografía */
+:root {
+  --primary-font-names: "", "Brewery";
+  --secondary-font-names: "", "PT Sans", sans-serif;
+  --tertiary-font-names: "", "Main", "PT Sans", serif;
+}
+
+
+/* Carrusel */
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  animation: carousel-animation 70s linear infinite;
+  /* Cambia la duración y el tiempo de animación según tus necesidades */
+  margin-top: 2em;
+}
+
+.slide {
+  min-width: 100%;
+}
+
+@keyframes carousel-animation {
+  0% {
+    transform: translateX(50%);
+  }
+
+  20% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-250%);
+  }
+
+  /* Ajusta el valor según el número de diapositivas */
+}
+
+/* Ajusta el tamaño de las imágenes según sea necesario */
+.slide img {
+  width: 15%;
+  height: auto;
+}

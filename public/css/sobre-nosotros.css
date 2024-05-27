@@ -1,0 +1,51 @@
+body {
+    background-color: #F2C166;
+  }
+  
+  /* Variables de tipografía */
+  :root {
+    --primary-font-names: "", "Brewery";
+    --secondary-font-names: "", "PT Sans", sans-serif;
+    --tertiary-font-names: "", "Main", "PT Sans", serif;
+  }
+
+main {
+    margin-top: 150px;
+}
+
+.about-us,
+.about-us-reverse {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.about-text {
+    flex: 1;
+    padding: 50px;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.card {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+#map {
+    width: 50%;
+    height: 400px; 
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
