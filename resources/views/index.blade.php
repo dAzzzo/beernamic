@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="{{ asset('css/index.css') }}">
   <link rel="stylesheet" href="{{ asset('css/header.css') }}">
   <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/botones.css') }}">
   <link rel="stylesheet" href="{{ asset('css/card.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/botones.css') }}">
   <link rel="stylesheet" href="{{ asset('css/acordeon.css') }}">
 
   <link rel="icon" href="{{ asset('img/LogoBeernamic2.png') }}" type="image/x-icon">
