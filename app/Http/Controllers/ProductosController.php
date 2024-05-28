@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class ProductosController extends Controller
 {
@@ -39,13 +41,19 @@ class ProductosController extends Controller
         }
 
         // Obtener los productos paginados
-        $productos = $query->paginate(7);
+        $productos = $query->paginate(8);
 
         // Obtener todas las marcas y variedades para los select options
         $marcas = Producto::select('marca')->distinct()->pluck('marca');
         $variedades = Producto::select('variedad')->distinct()->pluck('variedad');
 
         return view('productos.index', compact('productos', 'marcas', 'variedades'));
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin')->except(['index', 'show']);
     }
     
     /**
@@ -66,9 +74,25 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        Producto::create($request->all());
-        return redirect()->route('productos.index')
-                         ->with('success', 'Producto creado exitosamente.');
+        $request->validate([
+            'marca' => 'required|string|max:255',
+            'variedad' => 'required|string|max:255',
+            'precio' => 'required|numeric',
+            'stock' => 'required|integer',
+            'Img' => 'required|image',
+        ]);
+
+        $imagePath = $request->file('Img')->store('cervezas', 'public');
+
+        Producto::create([
+            'marca' => $request->marca,
+            'variedad' => $request->variedad,
+            'precio' => $request->precio,
+            'stock' => $request->stock,
+            'Img' => basename($imagePath),
+        ]);
+
+        return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente.');
     }
 
      /**
@@ -101,11 +125,28 @@ class ProductosController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        $producto->update($request->all());
-        return redirect()->route('productos.index')
-                         ->with('success', 'Producto actualizado exitosamente.');
-    }
+        $request->validate([
+            'marca' => 'required|string|max:255',
+            'variedad' => 'required|string|max:255',
+            'precio' => 'required|numeric',
+            'stock' => 'required|integer',
+            'Img' => 'sometimes|image',
+        ]);
 
+        if ($request->hasFile('Img')) {
+            $imagePath = $request->file('Img')->store('cervezas', 'public');
+            $producto->Img = basename($imagePath);
+        }
+
+        $producto->update([
+            'marca' => $request->marca,
+            'variedad' => $request->variedad,
+            'precio' => $request->precio,
+            'stock' => $request->stock,
+        ]);
+
+        return redirect()->route('productos.index')->with('success', 'Producto actualizado exitosamente.');
+    } 
     /**
      * Remove the specified resource from storage.
      *

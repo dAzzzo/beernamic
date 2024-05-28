@@ -179,6 +179,12 @@
   </footer>
 
 
+  @if(Auth::check() && Auth::user()->role == 'admin')
+    <script>
+        alert("¡Bienvenido Administrador de la Página! Tienes privilegios especiales.");
+    </script>
+@endif
+
   <script>
     function toggleUserPanel() {
       var options = document.getElementById("userOptions");

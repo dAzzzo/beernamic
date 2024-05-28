@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS Productos (
     Img TEXT,
     Precio DECIMAL(10, 2),
     Stock INT
+    Descripcion TEXT
 );
 
 

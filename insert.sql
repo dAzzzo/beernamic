@@ -1,6 +1,6 @@
 -- Extras son las cervezas diferentes o edición limitada
 
-INSERT INTO Productos (Marca, Variedad, Img, Precio, Stock) VALUES
+INSERT INTO Productos (Marca, Variedad, Img, Precio, Stock, Descripcion) VALUES
 ('Cruzcampo', 'Especial', 'front-bottle-especial.png', 2.80, 80),
 ('Cruzcampo', 'Sin Gluten', 'front-bottle-singluten.png', 2.90, 90),
 ('Cruzcampo', 'Radler', 'front-bottle-radler.png', 2.70, 60),
@@ -8,6 +8,16 @@ INSERT INTO Productos (Marca, Variedad, Img, Precio, Stock) VALUES
 ('Cruzcampo', 'Extras', 'front-bottle-cana.png ', 3.20, 50),
 ('Cruzcampo', 'Extras', 'front-bottle-reserva.png', 2.50, 100),
 ('Cruzcampo', 'Extras', 'front-bottle-reserva00.png', 2.50, 100),
+('Cruzcampo', 'Extras', 'front-bottle-tremenda.png', 2.50, 100),
+
+('Estrella Galicia', 'Especial', 'botella-estrella-galicia-especial.png', 2.80, 80),
+('Estrella Galicia', 'Sin Gluten', 'botella-estrella-galicia-sin-gluten.png', 3.00, 70),
+('Estrella Galicia', 'Tostada', 'estrella-galicia-00-tostada-1.png', 2.90, 90),
+('Estrella Galicia', '0.0', 'estrella-galicia-00-negra.png', 2.70, 60),
+('Estrella Galicia', '0.0', 'botella-estrella-galicia-00.png', 2.70, 60),
+('Estrella Galicia', 'Extras', 'ledg-bottle.png', 3.20, 50),
+('Estrella Galicia', 'Extras', 'botella-edicion-navidad.png', 3.20, 50),
+('Estrella Galicia', 'Extras', 'estrella_galicia_bodega.png', 3.20, 50),
 
 ('Mahou', 'Clasica', 'mahou-bottle-clasic.png', 2.40, 110),
 ('Mahou', 'IPA', 'mahou-bottle-ipa.png', 2.70, 90),
@@ -18,16 +28,6 @@ INSERT INTO Productos (Marca, Variedad, Img, Precio, Stock) VALUES
 ('Mahou', 'Barrica', 'Barrica_Or.png', 2.60, 60),
 ('Mahou', 'Barrica', 'Barrica_Bou.png', 2.60, 60),
 ('Mahou', 'Barrica', 'Barrica_12.png', 2.60, 60),
-
-('Estrella Galicia', 'Especial', 'botella-estrella-galicia-especial.png', 2.80, 80),
-('Estrella Galicia', 'Sin Gluten', 'botella-estrella-galicia-sin-gluten.png', 3.00, 70),
-('Estrella Galicia', 'Tostada', 'estrella-galicia-00-tostada-1.png', 2.90, 90),
-('Estrella Galicia', '0.0', 'estrella-galicia-00-tostada-1.png', 2.70, 60),
-('Estrella Galicia', '0.0', 'estrella-galicia-00-negra.png', 2.70, 60),
-('Estrella Galicia', '0.0', 'botella-estrella-galicia-00.png', 2.70, 60),
-('Estrella Galicia', 'Extras', 'ledg-bottle.png', 3.20, 50),
-('Estrella Galicia', 'Extras', 'botella-edicion-navidad.png', 3.20, 50),
-('Estrella Galicia', 'Extras', 'estrella_galicia_bodega.png', 3.20, 50),
 
 ('Heineken', 'Clasica', 'heineken-original-bottle.png', 2.60, 110),
 ('Heineken', 'Clasica', 'heineken-original-can.png', 2.60, 110),
@@ -133,3 +133,52 @@ SET Img = CASE
     WHEN Marca = 'Alhambra' AND Variedad = 'Extras' THEN 'alhambra-reserva.png'
     WHEN Marca = 'Alhambra' AND Variedad = 'Extras' THEN 'alhambra-numeradas.png'
 END;
+
+
+-- BBDD final
+
+INSERT INTO Productos (marca, variedad, Img, precio, stock, Descripcion) VALUES
+('Cruzcampo', 'Especial', 'front-bottle-especial.png', 2.80, 80, 'Cerveza Cruzcampo Especial, una cerveza de sabor único y refrescante.'),
+('Cruzcampo', 'Sin Gluten', 'front-bottle-singluten.png', 2.90, 90, 'Cerveza Cruzcampo Sin Gluten, ideal para aquellos con intolerancia al gluten.'),
+('Cruzcampo', 'Radler', 'front-bottle-radler.png', 2.70, 60, 'Cerveza Cruzcampo Radler, una combinación refrescante de cerveza y limón.'),
+('Cruzcampo', '0.0', 'front-bottle-cruzcampo00.png', 3.20, 50, 'Cerveza Cruzcampo 0.0, todo el sabor de Cruzcampo sin alcohol.'),
+('Cruzcampo', 'Extras', 'front-bottle-cana.png', 3.20, 50, 'Cerveza Cruzcampo Extras, disfruta de esta variedad especial.'),
+('Cruzcampo', 'Extras', 'front-bottle-reserva.png', 2.50, 100, 'Cerveza Cruzcampo Extras Reserva, una opción de alta calidad.'),
+('Cruzcampo', 'Extras', 'front-bottle-reserva00.png', 2.50, 100, 'Cerveza Cruzcampo Extras Reserva 0.0, calidad sin alcohol.'),
+('Cruzcampo', 'Extras', 'front-bottle-tremenda.png', 2.50, 100, 'Cerveza Cruzcampo Extras Tremenda, una elección excepcional.'),
+
+('Estrella Galicia', 'Especial', 'botella-estrella-galicia-especial.png', 2.80, 80, 'Cerveza Estrella Galicia Especial, una cerveza con carácter.'),
+('Estrella Galicia', 'Sin Gluten', 'botella-estrella-galicia-sin-gluten.png', 3.00, 70, 'Cerveza Estrella Galicia Sin Gluten, calidad para todos.'),
+('Estrella Galicia', 'Tostada', 'estrella-galicia-00-tostada-1.png', 2.90, 90, 'Cerveza Estrella Galicia 1906 Tostada, un sabor intenso.'),
+('Estrella Galicia', '0.0', 'estrella-galicia-00-negra.png', 2.70, 60, 'Cerveza Estrella Galicia 0.0 Negra, disfruta sin límites.'),
+('Estrella Galicia', '0.0', 'botella-estrella-galicia-00.png', 2.70, 60, 'Cerveza Estrella Galicia 0.0, sabor auténtico sin alcohol.'),
+('Estrella Galicia', 'Extras', 'ledg-bottle.png', 3.20, 50, 'Cerveza Estrella Galicia Extras, una variedad especial.'),
+('Estrella Galicia', 'Extras', 'botella-edicion-navidad.png', 3.20, 50, 'Cerveza Estrella Galicia Edición Navidad, una delicia estacional.'),
+('Estrella Galicia', 'Extras', 'estrella_galicia_bodega.png', 3.20, 50, 'Cerveza Estrella Galicia Bodega, calidad suprema.'),
+
+('Mahou', 'Clasica', 'mahou-bottle-clasic.png', 2.40, 110, 'Cerveza Mahou Clásica, sabor tradicional desde 1890.'),
+('Mahou', 'IPA', 'mahou-bottle-ipa.png', 2.70, 90, 'Cerveza Mahou IPA, un toque diferente y refrescante.'),
+('Mahou', 'Sin Gluten', 'mahou-bottle-gluten.png', 2.90, 70, 'Cerveza Mahou Sin Gluten, disfruta sin preocupaciones.'),
+('Mahou', 'Radler', 'mahou-bottle-radler.png', 2.80, 80, 'Cerveza Mahou Radler, una combinación única de sabores.'),
+('Mahou', 'Tostada', 'M00T_33cl.png', 2.60, 60, 'Cerveza Mahou 0.0 Tostada, una experiencia diferente.'),
+('Mahou', 'Barrica', 'Barrica_Or.png', 2.60, 60, 'Cerveza Mahou Barrica Oro, calidad excepcional.'),
+('Mahou', 'Barrica', 'Barrica_Bou.png', 2.60, 60, 'Cerveza Mahou Barrica Bourbon, una elección sofisticada.'),
+('Mahou', 'Barrica', 'Barrica_12.png', 2.60, 60, 'Cerveza Mahou Barrica 12 Meses, una joya de la cervecería.'),
+
+('Heineken', 'Clasica', 'heineken-original-bottle.png', 2.60, 110, 'Cerveza Heineken Clásica, calidad holandesa desde 1873.'),
+('Heineken', 'Clasica', 'heineken-original-can.png', 2.60, 110, 'Cerveza Heineken Clásica, disfruta en cualquier momento.'),
+('Heineken', '0.0', 'heineken-00-bottle.png', 2.80, 60, 'Cerveza Heineken 0.0, sabor auténtico sin alcohol.'),
+('Heineken', 'Extras', 'heineken-silver-sleek-can-product.png', 2.60, 110, 'Cerveza Heineken Silver Sleek, una presentación elegante.'),
+('Heineken', 'Extras', 'heineken-draught-glass.png', 2.60, 110, 'Cerveza Heineken Draught Glass, disfruta de una experiencia única.'),
+('Heineken', 'Extras', 'heineken-extra-cold-glass.png', 2.60, 110, 'Cerveza Heineken Extra Cold Glass, para los amantes de la frescura.'),
+('Heineken', 'Extras', 'heineken-draught-keg.png', 2.60, 110, 'Cerveza Heineken Draught Keg, el complemento perfecto para tu fiesta.'),
+('Heineken', 'Extras', 'heineken-sub.png', 2.60, 110, 'Cerveza Heineken Sub, la manera perfecta de beber con amigos.'),
+
+('Alhambra', 'Clasica', 'alhambra-1925.png', 2.70, 100, 'Cerveza Alhambra 1925: Una cerveza clásica con un sabor rico y equilibrado, que rinde homenaje a la tradición cervecera de Granada.'),
+('Alhambra', 'Clasica', 'alhambra-tradicional.png', 2.70, 100, 'Cerveza Alhambra Tradicional: Una cerveza de estilo clásico con un carácter suave y refrescante, perfecta para disfrutar en cualquier ocasión.'),
+('Alhambra', 'Especial', 'alhambra-especial.png', 3.00, 80, 'Cerveza Alhambra Especial: Una cerveza especial con un sabor único y distintivo, elaborada con ingredientes de la más alta calidad.'),
+('Alhambra', 'Especial', 'alhambra-especial-sin.png', 3.00, 80, 'Cerveza Alhambra Especial Sin Alcohol: Una versión sin alcohol de la cerveza Alhambra Especial, que conserva todo su sabor y carácter refrescante.'),
+('Alhambra', 'IPA', 'alhambra-reserva-citra-ipa.png', 2.90, 60, 'Cerveza Alhambra Reserva Citra IPA: Una cerveza IPA con un intenso aroma cítrico y un sabor a lúpulo fresco y floral, que ofrece una experiencia de sabor única.'),
+('Alhambra', 'Barrica', 'alhambra-barrica-ron-granada.png', 3.40, 50, 'Cerveza Alhambra Barrica Ron Granada: Una cerveza especial envejecida en barricas de ron de Granada, que le confiere un sabor suave y complejo con notas dulces y especiadas.'),
+('Alhambra', 'Extras', 'alhambra-reserva.png', 3.40, 50, 'Cerveza Alhambra Reserva: Una cerveza especial reservada para los amantes de la buena cerveza, con un sabor intenso y equilibrado que deja huella en el paladar.'),
+('Alhambra', 'Extras', 'alhambra-numeradas.png', 3.40, 50, 'Cerveza Alhambra Numeradas: Una edición limitada de cervezas numeradas, elaboradas con mimo y cuidado para ofrecer una experiencia única e irrepetible.');
