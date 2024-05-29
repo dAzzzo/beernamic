@@ -46,14 +46,16 @@
           <div id="userOptions" class="options">
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
               @csrf
-              <a href="{{ route('logout') }}" onclick="event.preventDefault();
+              <a  onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
-              {{ __('Logout') }}
-            </a>
+                {{ __('Logout') }}
+              </a>
             </form>
           </div>
         </div>
         @endguest
+
+
 
         <a href="{{ route('cart.index') }}"><button class="button">
             <img src="{{ asset('img/carritoBlanco.png') }}" class="cart-icon" alt="Carrito de compras">
@@ -180,10 +182,10 @@
 
 
   @if(Auth::check() && Auth::user()->role == 'admin')
-    <script>
-        alert("¡Bienvenido Administrador de la Página! Tienes privilegios especiales.");
-    </script>
-@endif
+  <script>
+    alert("¡Bienvenido Administrador de la Página! Tienes privilegios especiales.");
+  </script>
+  @endif
 
   <script>
     function toggleUserPanel() {

@@ -111,8 +111,9 @@ class ProductosController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Producto $producto)
+    public function edit($id)
     {
+        $producto = Producto::findOrFail($id);
         return view('productos.edit', compact('producto'));
     }
 

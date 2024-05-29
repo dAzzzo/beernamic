@@ -24,7 +24,13 @@ Route::group(['prefix' => 'cart'], function () {
 //Te manda a productos/index
 Route::get('/productos', [ProductosController::class, 'index'])->name('productos.index');
 Route::get('/producto/{producto}', [ProductosController::class, 'show'])->name('producto.show');
-
+//Los siguientes sirven para realizar el update, el delete y la creación de los productos si eres admin
+Route::middleware(['admin'])->group(function () {
+Route::put('/productos/{producto}', [ProductosController::class, 'update'])->name('productos.update');
+Route::delete('/productos/{producto}', [ProductosController::class, 'destroy'])->name('productos.destroy');
+Route::post('/productos', [ProductosController::class, 'store'])->name('productos.store');
+Route::get('/productos/create', [ProductosController::class, 'create'])->name('productos.create');
+});
 
 // Te manda a sobre nosotros
 Route::get('/sobre-nosotros', function () {

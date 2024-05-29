@@ -14,17 +14,17 @@ class AdminSeeder extends Seeder
         // solamente estos usuarios al logearse se consideraran como
         // admin, y tendrán privilegios
         DB::table('users')->insert([
-            'Nombre' => 'Admin',
-            'Email' => 'admin@gmail.com',
-            'Contraseña' => Hash::make('administrador'),
-            'rol' => 'admin',
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('administrador'),
+            'role' => 'admin',
         ]);
 
         DB::table('users')->insert([
-            'Nombre' => 'Daniel',
-            'Email' => 'daanco04@gmail.com',
-            'Contraseña' => Hash::make('administrador'),
-            'rol' => 'admin',
+            'name' => 'Daniel',
+            'email' => 'daanco04@gmail.com',
+            'password' => Hash::make('administrador'),
+            'role' => 'admin',
         ]);
     }
 }
