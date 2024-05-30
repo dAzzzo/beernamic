@@ -22,28 +22,46 @@
 
 
 <body>
-    <header>
-        <a href="{{ route('index') }}">
-            <img href="{{ route('index') }}" class="logoFoto" src="{{ asset('img/LogoBeernamic4.png') }}"
-                alt="Logo Beernamic">
-        </a>
-        <nav>
-            <a href="{{ route('productos.index') }}"><button><span class="box">Productos</span></button></a> |
-            <a href="{{ route('sobre-nosotros') }}"><button><span class="box">Sobre nosotros</span></button></a> |
-            <a href="{{ route('para-aprender') }}"><button><span class="box">Para aprender</span></button></a> |
-            <div class="user-panel">
-                <button class="user-button" onclick="toggleUserPanel()">Usuario</button>
-                <div id="userOptions" class="options">
-                    <a href="{{ route('login') }}"><button>Iniciar Sesión</button></a>
-                    <a href="{{ route('register') }}"><button>Registrarse</button></a>
-                </div>
-            </div>
-            <a href="{{ route('cart.index') }}"><button class="button">
-                    <img src="{{ asset('img/carritoBlanco.png') }}" class="cart-icon" alt="Carrito de compras">
-                </button></a>
-        </nav>
-    </header>
 
+<header>
+    <a href="{{ route('index') }}">
+      <img class="logoFoto" src="{{ asset('img/LogoBeernamic4.png') }}" alt="Logo Beernamic">
+    </a>
+    <!-- Este es el primer navbar visible -->
+    <div class='menu'>
+      <nav>
+        <a href="{{ route('productos.index') }}"><button><span class="box">Productos</span></button></a> |
+        <a href="{{ route('sobre-nosotros') }}"><button><span class="box">Sobre nosotros</span></button></a> |
+        <a href="{{ route('para-aprender') }}"><button><span class="box">Para aprender</span></button></a> |
+
+        @guest
+        <div class="user-panel">
+          <button class="user-button" onclick="toggleUserPanel()">Usuario</button>
+          <div id="userOptions" class="options">
+            <a href="{{ route('login') }}"><button>Iniciar Sesión</button></a>
+            <a href="{{ route('register') }}"><button>Registrarse</button></a>
+          </div>
+        </div>
+        @else
+        <div class="user-panel">
+        <button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button>
+          <div id="userOptions" class="options">
+          <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit">{{ __('Logout') }}</button>
+          </form>
+          </div>
+        </div>
+        @endguest
+
+
+        <a href="{{ route('cart.index') }}"><button class="button">
+            <img src="{{ asset('img/carritoBlanco.png') }}" class="cart-icon" alt="Carrito de compras">
+          </button></a>
+      </nav>
+    </div>
+</header>
+  
     <div class="search-bar">
         <!-- Formulario para filtrar por marca y variedad -->
         <form action="{{ route('productos.index') }}" method="GET">
@@ -81,7 +99,7 @@
             <!-- Botón para agregar un nuevo producto -->
             @if(Auth::check() && Auth::user()->role == 'admin')
             <div class="add">
-                <form action="{{ route('productos.store') }}" method="POST">
+                <form class="addition" action="{{ route('productos.store') }}" method="POST">
                     @csrf
                     <input type="text" name="marca" placeholder="Marca" required>
                     <input type="text" name="variedad" placeholder="Variedad" required>

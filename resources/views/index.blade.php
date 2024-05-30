@@ -14,9 +14,7 @@
 
   <link rel="icon" href="{{ asset('img/LogoBeernamic2.png') }}" type="image/x-icon">
 
-  <style>
 
-  </style>
 
 </head>
 
@@ -42,19 +40,15 @@
         </div>
         @else
         <div class="user-panel">
-          <button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button>
+        <button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button>
           <div id="userOptions" class="options">
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-              @csrf
-              <a  onclick="event.preventDefault();
-                           document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-              </a>
-            </form>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit">{{ __('Logout') }}</button>
+          </form>
           </div>
         </div>
         @endguest
-
 
 
         <a href="{{ route('cart.index') }}"><button class="button">

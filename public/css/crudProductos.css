@@ -26,12 +26,12 @@
 }
 
 /* Estilos para los formularios en línea */
-form {
+.addition {
     display: inline-block;
     margin-right: 5px;
 }
 
-form input {
+.addition input {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;

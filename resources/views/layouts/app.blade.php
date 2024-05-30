@@ -12,75 +12,63 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/botones.css') }}">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <style>
-        .hide-text {
-            font-size: 0;
-        }
-    </style>
+   
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand hide-text" href="{{ url('/index') }}">
-                    {{ config('app.name', 'Laravel') }}
-                    <img src="{{ asset('img/LogoBeernamic4.png') }}" alt="Logo de BeerNamic" height="40">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <header>
+            <a href="{{ route('index') }}">
+                <img class="logoFoto" src="{{ asset('img/LogoBeernamic4.png') }}" alt="Logo Beernamic">
+            </a>
+            <!-- Este es el primer navbar visible -->
+            <div class='menu'>
+                <nav>
+                    <a href="{{ route('productos.index') }}"><button><span class="box">Productos</span></button></a> |
+                    <a href="{{ route('sobre-nosotros') }}"><button><span class="box">Sobre nosotros</span></button></a> |
+                    <a href="{{ route('para-aprender') }}"><button><span class="box">Para aprender</span></button></a> |
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    @guest
+                    <div class="user-panel">
+                        <button class="user-button" onclick="toggleUserPanel()">Usuario</button>
+                        <div id="userOptions" class="options">
+                            <a href="{{ route('login') }}"><button>Iniciar Sesión</button></a>
+                            <a href="{{ route('register') }}"><button>Registrarse</button></a>
+                        </div>
+                    </div>
+                    @else
+                    <div class="user-panel">
+                        <button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button>
+                        <div id="userOptions" class="options">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit">{{ __('Logout') }}</button>
+                            </form>
+                        </div>
+                    </div>
+                    @endguest
 
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Hola, {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                    <a href="{{ route('cart.index') }}"><button class="button">
+                        <img src="{{ asset('img/carritoBlanco.png') }}" class="cart-icon" alt="Carrito de compras">
+                    </button></a>
+                </nav>
             </div>
-        </nav>
+        </header>
 
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+
+    <script>
+        function toggleUserPanel() {
+            var options = document.getElementById("userOptions");
+            options.style.display = options.style.display === "block" ? "none" : "block";
+        }
+    </script>
 </body>
 </html>

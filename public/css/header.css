@@ -10,7 +10,7 @@ header {
   z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
   display: flex; /* Usamos flexbox para ocupar todo el ancho y centrar el contenido */
   justify-content: space-around; /* Alineamos los elementos del header */
-  align-items: center; /* Centramos verticalmente */
+  align-items: center; 
   transition: background-color 0.5s, box-shadow 0.3s; /* Añade la transición para el sombreado */
   box-shadow: 0 2px 4px #0000001a; /* Añade un leve sombreado */
   box-sizing: border-box; /* Incluye el padding en el ancho total */
@@ -18,7 +18,7 @@ header {
 
 header.scrolled {
   background-color: #a66e29;
-  box-shadow: 0 2px 4px #0000004d; /* Ajusta el sombreado cuando se hace scroll */
+  box-shadow: 0 2px 4px #0000004d; 
 }
 
 /* Estilos para el menú de navegación */
@@ -35,7 +35,7 @@ nav a {
 }
 
 .logoFoto {
-  width: 9em; /* Tamaño del logo */
+  width: 9em;
 }
 
 .user-panel {

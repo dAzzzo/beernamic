@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class ProductosController extends Controller
 {
 
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin')->except(['index', 'show']);
+    }
     
     /**
      * Display a listing of the resource.
@@ -26,7 +32,7 @@ class ProductosController extends Controller
 
     //Este nuevo codigo sirve para lo anterior y el filtrado
     //Ahora recoge los productos, crea la paginación y filtra
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         $query = Producto::query();
 
@@ -47,13 +53,7 @@ class ProductosController extends Controller
         $marcas = Producto::select('marca')->distinct()->pluck('marca');
         $variedades = Producto::select('variedad')->distinct()->pluck('variedad');
 
-        return view('productos.index', compact('productos', 'marcas', 'variedades'));
-    }
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('admin')->except(['index', 'show']);
+        return response()->view('productos.index', compact('productos', 'marcas', 'variedades'));
     }
     
     /**
@@ -61,9 +61,9 @@ class ProductosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): Response
     {
-        return view('productos.create');
+        return response()->view('productos.create');
     }
 
     /**
@@ -72,7 +72,7 @@ class ProductosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'marca' => 'required|string|max:255',
@@ -101,9 +101,9 @@ class ProductosController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function show(Producto $producto)
+    public function show(Producto $producto): Response
     {
-        return view('productos.show', compact('producto'));
+        return response()->view('productos.show', compact('producto'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -111,10 +111,10 @@ class ProductosController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id): Response
     {
         $producto = Producto::findOrFail($id);
-        return view('productos.edit', compact('producto'));
+        return response()->view('productos.edit', compact('producto'));
     }
 
     /**
@@ -124,7 +124,7 @@ class ProductosController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Producto $producto)
+    public function update(Request $request, Producto $producto): RedirectResponse
     {
         $request->validate([
             'marca' => 'required|string|max:255',
@@ -154,7 +154,7 @@ class ProductosController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Producto $producto)
+    public function destroy(Producto $producto): RedirectResponse
     {
         $producto->delete();
         return redirect()->route('productos.index')
