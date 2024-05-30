@@ -30,6 +30,8 @@ class LoginController extends Controller
      *
      * @var string
      */
+
+     //Mejor no toca el nombre del redirect, si se elige index se buggea
     protected $redirectTo = '/';
 
     /**
@@ -59,7 +61,9 @@ class LoginController extends Controller
         $cookieDuration = 60; // Duración en minutos
 
         // Establecer la cookie en la respuesta HTTP
-        $response = redirect('/index');
+             //Mejor no toca el nombre del redirect, si se elige index se buggea
+
+        $response = redirect('/');
         $response->cookie('nombreCookie', $cookieValue, $cookieDuration);
 
         return $response;

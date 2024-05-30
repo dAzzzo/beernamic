@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
 
 
+// Rutas de autenticación generadas por Laravel
 Auth::routes();
 
 // Te manda a index
@@ -13,9 +15,8 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
- // Ruta para el login
- Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
- Route::post('login', [LoginController::class, 'login']); 
+
+
 // Ruta para el logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
@@ -46,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
     // Rutas que cualquier usuario autenticado puede acceder
     Route::get('/productos', [ProductosController::class, 'index'])->name('productos.index');
     Route::get('/productos/{producto}', [ProductosController::class, 'show'])->name('productos.show');
+    
 });
 
 // Te manda a sobre nosotros
@@ -60,4 +62,4 @@ Route::get('/para-aprender', function () {
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

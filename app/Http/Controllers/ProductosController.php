@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Auth;
 class ProductosController extends Controller
 {
 
-
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('admin')->except(['index', 'show']);
     }
     
+   
     /**
      * Display a listing of the resource.
      *
