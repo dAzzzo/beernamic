@@ -101,7 +101,8 @@
              
             <form action="{{ route('cart.add') }}" method="POST">
                  @csrf
-                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <input type="hidden" name="id" value="{{ $producto->id }}">
+                    <input type="number" name="quantity" value="1" min="1">
                     <button type="submit" class="btn btn-primary"> <img src="{{ asset('img/carritoBlanco.png') }}" class="button" style="width: 50px; height: auto;"
                         alt="Añadir al carrito"></button>
             </form>

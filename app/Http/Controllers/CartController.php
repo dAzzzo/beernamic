@@ -20,10 +20,10 @@ class CartController extends Controller
     public function add(Request $request)
     {
         $userId = Auth::id();
-        $productId = $request->input('product_id');
+        $productId = $request->input('id');
         $quantity = $request->input('quantity', 1);
 
-        $cartItem = Cart::where('UserID', $userId)->where('ProductoID', $productId)->first();
+        $cartItem = Cart::where('UserID', $userId)->where('id', $productId)->first();
 
         if ($cartItem) {
             $cartItem->Cantidad += $quantity;
@@ -31,7 +31,7 @@ class CartController extends Controller
         } else {
             Cart::create([
                 'UserID' => $userId,
-                'ProductoID' => $productId,
+                'id' => $productId,
                 'Cantidad' => $quantity
             ]);
         }
@@ -42,7 +42,7 @@ class CartController extends Controller
     public function remove(Request $request)
     {
         $userId = Auth::id();
-        $productId = $request->input('product_id');
+        $productId = $request->input('id');
 
         Cart::where('UserID', $userId)->where('ProductoID', $productId)->delete();
 
@@ -52,7 +52,7 @@ class CartController extends Controller
     public function update(Request $request)
     {
         $userId = Auth::id();
-        $productId = $request->input('product_id');
+        $productId = $request->input('id');
         $quantity = $request->input('quantity');
 
         $cartItem = Cart::where('UserID', $userId)->where('ProductoID', $productId)->first();
