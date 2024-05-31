@@ -1,77 +1,69 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Producto;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Cart;
+use App\Models\Product;
 
 class CartController extends Controller
 {
     public function index()
     {
-        $cartItems = session()->get('cart', []);
+        $userId = Auth::id();
+        $cartItems = Cart::where('UserID', $userId)->with('product')->get();
+
         return view('cart.index', compact('cartItems'));
     }
 
-    public function addToCart($id)
+    public function add(Request $request)
     {
-        $producto = Producto::findOrFail($id);
-    
-        $cart = session()->get('cart', []);
-    
-        if (isset($cart[$id])) {
-            $cart[$id]['cantidad']++;
+        $userId = Auth::id();
+        $productId = $request->input('product_id');
+        $quantity = $request->input('quantity', 1);
+
+        $cartItem = Cart::where('UserID', $userId)->where('ProductoID', $productId)->first();
+
+        if ($cartItem) {
+            $cartItem->Cantidad += $quantity;
+            $cartItem->save();
         } else {
-            $cart[$id] = [
-                'id' => $producto->id,
-                'nombre' => $producto->marca . ' - ' . $producto->variedad,
-                'precio' => $producto->precio,
-                'stock' => $producto->stock,
-                'img' => $producto->img,
-                'cantidad' => 1,
-            ];
+            Cart::create([
+                'UserID' => $userId,
+                'ProductoID' => $productId,
+                'Cantidad' => $quantity
+            ]);
         }
-    
-        session()->put('cart', $cart);
-    
-        return redirect()->route('cart.index')->with('success', 'Producto añadido al carrito correctamente.');
+
+        return redirect()->route('cart.index');
     }
-    
 
-
-    public function update(Request $request, $id)
+    public function remove(Request $request)
     {
-        if ($request->quantity <= 0) {
-            return redirect()->route('cart.index')->with('error', 'Cantidad no válida!');
-        }
+        $userId = Auth::id();
+        $productId = $request->input('product_id');
 
-        $cart = session()->get('cart', []);
-        if (isset($cart[$id])) {
-            $cart[$id]['quantity'] = $request->quantity;
-            session()->put('cart', $cart);
-            return redirect()->route('cart.index')->with('success', 'Cantidad actualizada!');
-        }
+        Cart::where('UserID', $userId)->where('ProductoID', $productId)->delete();
 
-        return redirect()->route('cart.index')->with('error', 'Producto no encontrado en el carrito!');
+        return redirect()->route('cart.index');
     }
 
-    public function remove($id)
+    public function update(Request $request)
     {
-        $cart = session()->get('cart', []);
-        if (isset($cart[$id])) {
-            unset($cart[$id]);
-            session()->put('cart', $cart);
-            return redirect()->route('cart.index')->with('success', 'Producto eliminado!');
+        $userId = Auth::id();
+        $productId = $request->input('product_id');
+        $quantity = $request->input('quantity');
+
+        $cartItem = Cart::where('UserID', $userId)->where('ProductoID', $productId)->first();
+
+        if ($cartItem && $quantity > 0) {
+            $cartItem->Cantidad = $quantity;
+            $cartItem->save();
+        } elseif ($cartItem && $quantity <= 0) {
+            $cartItem->delete();
         }
 
-        return redirect()->route('cart.index')->with('error', 'Producto no encontrado en el carrito!');
+        return redirect()->route('cart.index');
     }
-
-    public function showCart()
-{
-    $cartItems = session()->get('cart', []);
-    return view('cart.index', compact('cartItems'));
-}
-
 }

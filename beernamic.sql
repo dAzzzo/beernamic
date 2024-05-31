@@ -8,12 +8,12 @@ CREATE TABLE IF NOT EXISTS Usuarios (
 );
 
 CREATE TABLE IF NOT EXISTS Productos (
-    ProductoID INT PRIMARY KEY AUTO_INCREMENT,
-    Marca VARCHAR(50),
-    Variedad VARCHAR(50),
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    marca VARCHAR(50),
+    variedad VARCHAR(50),
     Img TEXT,
-    Precio DECIMAL(10, 2),
-    Stock INT
+    precio DECIMAL(10, 2),
+    stock INT
     Descripcion TEXT
 );
 

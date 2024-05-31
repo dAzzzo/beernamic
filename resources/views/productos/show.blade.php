@@ -98,13 +98,13 @@
             <p><strong>Precio:</strong> {{ $producto->precio }} €</p>
             <p><strong>Stock:</strong> {{ $producto->stock }}</p>
             <p><strong>Descripción:</strong> {{ $producto->Descripcion }}</p>
-             <!-- <form action="{{ route('cart.addToCart', $producto->id) }}" method="POST">
-                @csrf
-                <button type="submit">
-                    <img src="{{ asset('img/carritoBlanco.png') }}" class="button" style="width: 50px; height: auto;"
-                        alt="Añadir al carrito">
-                </button>
-            </form>  -->
+             
+            <form action="{{ route('cart.add') }}" method="POST">
+                 @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <button type="submit" class="btn btn-primary"> <img src="{{ asset('img/carritoBlanco.png') }}" class="button" style="width: 50px; height: auto;"
+                        alt="Añadir al carrito"></button>
+            </form>
             <img src="{{ asset('img/comprarBlanco.png') }}" class="button" style="width: 50px; height: auto;"
                 alt="Comprar producto">
         </div>

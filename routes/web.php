@@ -16,7 +16,6 @@ Route::get('/', function () {
 })->name('index');
 
 
-
 // Ruta para el logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
@@ -25,10 +24,13 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 Route::group(['prefix' => 'cart'], function () {
     Route::get('/', [CartController::class, 'showCart'])->name('cart.index');
     //Necesita el id del usuario
-    Route::post('/add/{id}', [CartController::class, 'addToCart'])->name('cart.addToCart');
-    Route::patch('/{id}', [CartController::class, 'update'])->name('cart.update');
-    Route::delete('/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+    Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');    
 });
+
+
+
 
 //Te manda a productos/index
 Route::get('/productos', [ProductosController::class, 'index'])->name('productos.index');

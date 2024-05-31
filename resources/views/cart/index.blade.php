@@ -89,7 +89,45 @@
 
 
     <main>
-  
+    @extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h1>Shopping Cart</h1>
+
+    @if($cartItems->count() > 0)
+        <table class="table">
+            <thead>
+                <tr>
+                        <th></th>
+                        <th>Marca</th>
+                        <th>Variedad</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($productos as $producto)
+                    <tr>
+                        <td>
+                            <a href="{{ route('producto.show', $producto->id) }}">
+                                <img src="{{ asset('img/cervezas/' . $producto->Img) }}"
+                                    alt="Imagen de {{ $producto->marca }}" width="100">
+                            </a>
+                        </td>
+                        <td>{{ $producto->marca }}</td>
+                        <td>{{ $producto->variedad }}</td>
+                        <td>{{ $producto->precio }} €</td>
+                        <td>{{ $producto->stock }}</td>
+            </tbody>
+        </table>
+    @else
+        <p>Tú carrito está vacio!</p>
+    @endif
+
+    <a href="{{ url('/') }}" class="btn btn-primary">Sigue comprando...</a>
+</div>
+@endsection
     </main>
 
 
