@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS Productos (
     variedad VARCHAR(50),
     Img TEXT,
     precio DECIMAL(10, 2),
-    stock INT
+    stock INT,
     Descripcion TEXT
 );
 

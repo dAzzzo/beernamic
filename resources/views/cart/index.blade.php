@@ -6,35 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-.producto-detalles {
-    background-color: #732002;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    max-width: 400px; 
-    margin: 0 auto; /* Centrar horizontalmente */
-    margin-bottom: 45px;
-}
+        .producto-detalles {
+            background-color: #732002;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+            /* Centrar horizontalmente */
+            margin-bottom: 45px;
+        }
 
-.producto-detalles h1 {
-    margin-bottom: 10px;
-    color: white;
-}
+        .producto-detalles h1 {
+            margin-bottom: 10px;
+            color: white;
+        }
 
-.producto-detalles img {
-    max-width: 100%; /* La imagen no superará el ancho del contenedor */
-    height: auto; /* Para mantener la relación de aspecto */
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
+        .producto-detalles img {
+            max-width: 100%;
+            /* La imagen no superará el ancho del contenedor */
+            height: auto;
+            /* Para mantener la relación de aspecto */
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
 
-.producto-detalles p {
-    margin-bottom: 10px;
-    color: white;
-}
-
-</style>
+        .producto-detalles p {
+            margin-bottom: 10px;
+            color: white;
+        }
+    </style>
 
     <title>Carrito</title>
     <link rel="stylesheet" href="{{ asset('css/productos.css') }}">
@@ -48,87 +50,90 @@
 </head>
 
 <body>
-<header>
-    <a href="{{ route('index') }}">
-      <img class="logoFoto" src="{{ asset('img/LogoBeernamic4.png') }}" alt="Logo Beernamic">
-    </a>
-    <!-- Este es el primer navbar visible -->
-    <div class='menu'>
-      <nav>
-        <a href="{{ route('productos.index') }}"><button><span class="box">Productos</span></button></a> |
-        <a href="{{ route('sobre-nosotros') }}"><button><span class="box">Sobre nosotros</span></button></a> |
-        <a href="{{ route('para-aprender') }}"><button><span class="box">Para aprender</span></button></a> |
+    <header>
+        <a href="{{ route('index') }}">
+            <img class="logoFoto" src="{{ asset('img/LogoBeernamic4.png') }}" alt="Logo Beernamic">
+        </a>
+        <!-- Este es el primer navbar visible -->
+        <div class='menu'>
+            <nav>
+                <a href="{{ route('productos.index') }}"><button><span class="box">Productos</span></button></a> |
+                <a href="{{ route('sobre-nosotros') }}"><button><span class="box">Sobre nosotros</span></button></a> |
+                <a href="{{ route('para-aprender') }}"><button><span class="box">Para aprender</span></button></a> |
 
-        @guest
-        <div class="user-panel">
-          <button class="user-button" onclick="toggleUserPanel()">Usuario</button>
-          <div id="userOptions" class="options">
-            <a href="{{ route('login') }}"><button>Iniciar Sesión</button></a>
-            <a href="{{ route('register') }}"><button>Registrarse</button></a>
-          </div>
+                @guest
+                <div class="user-panel">
+                    <button class="user-button" onclick="toggleUserPanel()">Usuario</button>
+                    <div id="userOptions" class="options">
+                        <a href="{{ route('login') }}"><button>Iniciar Sesión</button></a>
+                        <a href="{{ route('register') }}"><button>Registrarse</button></a>
+                    </div>
+                </div>
+                @else
+                <div class="user-panel">
+                    <button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button>
+                    <div id="userOptions" class="options">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit">{{ __('Logout') }}</button>
+                        </form>
+                    </div>
+                </div>
+                @endguest
+
+
+                <a href="{{ route('cart.index') }}"><button class="button">
+                        <img src="{{ asset('img/carritoBlanco.png') }}" class="cart-icon" alt="Carrito de compras">
+                    </button></a>
+            </nav>
         </div>
-        @else
-        <div class="user-panel">
-        <button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button>
-          <div id="userOptions" class="options">
-          <form id="logout-form" action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit">{{ __('Logout') }}</button>
-          </form>
-          </div>
-        </div>
-        @endguest
-
-
-        <a href="{{ route('cart.index') }}"><button class="button">
-            <img src="{{ asset('img/carritoBlanco.png') }}" class="cart-icon" alt="Carrito de compras">
-          </button></a>
-      </nav>
-    </div>
-  </header>
+    </header>
 
 
     <main>
     @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <h1>Shopping Cart</h1>
+    @section('content')
+    <div class="container">
+        <h1>Shopping Cart</h1>
 
-    @if($cartItems->count() > 0)
+        @if($cartItems->count() > 0)
         <table class="table">
             <thead>
                 <tr>
-                        <th></th>
-                        <th>Marca</th>
-                        <th>Variedad</th>
-                        <th>Precio</th>
-                        <th>Stock</th>
+                    <th></th>
+                    <th>Marca</th>
+                    <th>Variedad</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
                 </tr>
             </thead>
             <tbody>
-            @foreach($productos as $producto)
-                    <tr>
-                        <td>
-                            <a href="{{ route('producto.show', $producto->id) }}">
-                                <img src="{{ asset('img/cervezas/' . $producto->Img) }}"
-                                    alt="Imagen de {{ $producto->marca }}" width="100">
-                            </a>
-                        </td>
-                        <td>{{ $producto->marca }}</td>
-                        <td>{{ $producto->variedad }}</td>
-                        <td>{{ $producto->precio }} €</td>
-                        <td>{{ $producto->stock }}</td>
+                @foreach($productos as $producto)
+                <tr>
+                    <td>
+                        <a href="{{ route('producto.show', $producto->id) }}">
+                            <img src="{{ asset('img/cervezas/' . $producto->Img) }}"
+                                alt="Imagen de {{ $producto->marca }}" width="100">
+                        </a>
+                    </td>
+                    <td>{{ $producto->marca }}</td>
+                    <td>{{ $producto->variedad }}</td>
+                    <td>{{ $producto->precio }} €</td>
+                    <td>{{ $producto->stock }}</td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
-    @else
-        <p>Tú carrito está vacio!</p>
-    @endif
+        @else
+        <p>Tu carrito está vacío!</p>
+        @endif
 
-    <a href="{{ url('/') }}" class="btn btn-primary">Sigue comprando...</a>
-</div>
-@endsection
+        <a href="{{ url('/') }}" class="btn btn-primary">Sigue comprando...</a>
+    </div>
+    @endsection
     </main>
+
 
 
     <!-- <footer>

@@ -17,8 +17,10 @@ class CreateProductosTable extends Migration
             $table->id();
             $table->string('marca');
             $table->string('variedad');
+            $table->string('Img'); 
             $table->float('precio', 8, 2);
             $table->integer('stock');
+            $table->text('Descripcion');
             $table->timestamps();
         });
     }

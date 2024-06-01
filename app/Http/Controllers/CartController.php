@@ -55,7 +55,7 @@ class CartController extends Controller
         $productId = $request->input('id');
         $quantity = $request->input('quantity');
 
-        $cartItem = Cart::where('UserID', $userId)->where('ProductoID', $productId)->first();
+        $cartItem = Cart::where('UserID', $userId)->where('id', $productId)->first();
 
         if ($cartItem && $quantity > 0) {
             $cartItem->Cantidad = $quantity;
