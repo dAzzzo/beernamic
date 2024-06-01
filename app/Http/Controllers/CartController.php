@@ -14,7 +14,9 @@ class CartController extends Controller
         $userId = Auth::id();
         $cartItems = Cart::where('UserID', $userId)->with('product')->get();
 
-        return view('cart.index', compact('cartItems'));
+        $productos = $cartItems->pluck('product');
+
+    return view('cart.index', compact('cartItems', 'productos'));
     }
 
     public function add(Request $request)

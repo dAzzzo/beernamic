@@ -50,45 +50,7 @@
 </head>
 
 <body>
-    <header>
-        <a href="{{ route('index') }}">
-            <img class="logoFoto" src="{{ asset('img/LogoBeernamic4.png') }}" alt="Logo Beernamic">
-        </a>
-        <!-- Este es el primer navbar visible -->
-        <div class='menu'>
-            <nav>
-                <a href="{{ route('productos.index') }}"><button><span class="box">Productos</span></button></a> |
-                <a href="{{ route('sobre-nosotros') }}"><button><span class="box">Sobre nosotros</span></button></a> |
-                <a href="{{ route('para-aprender') }}"><button><span class="box">Para aprender</span></button></a> |
-
-                @guest
-                <div class="user-panel">
-                    <button class="user-button" onclick="toggleUserPanel()">Usuario</button>
-                    <div id="userOptions" class="options">
-                        <a href="{{ route('login') }}"><button>Iniciar Sesión</button></a>
-                        <a href="{{ route('register') }}"><button>Registrarse</button></a>
-                    </div>
-                </div>
-                @else
-                <div class="user-panel">
-                    <button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button>
-                    <div id="userOptions" class="options">
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit">{{ __('Logout') }}</button>
-                        </form>
-                    </div>
-                </div>
-                @endguest
-
-
-                <a href="{{ route('cart.index') }}"><button class="button">
-                        <img src="{{ asset('img/carritoBlanco.png') }}" class="cart-icon" alt="Carrito de compras">
-                    </button></a>
-            </nav>
-        </div>
-    </header>
-
+ 
 
     <main>
     @extends('layouts.app')
@@ -129,7 +91,7 @@
         <p>Tu carrito está vacío!</p>
         @endif
 
-        <a href="{{ url('/') }}" class="btn btn-primary">Sigue comprando...</a>
+        <a href="{{ url('/productos') }}" class="btn btn-primary">Sigue comprando...</a>
     </div>
     @endsection
     </main>
