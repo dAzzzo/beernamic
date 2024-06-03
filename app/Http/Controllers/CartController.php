@@ -19,6 +19,11 @@ class CartController extends Controller
     return view('cart.index', compact('cartItems', 'productos'));
     }
 
+    public function showCart()
+    {
+        return $this->index();
+    }
+
     public function add(Request $request)
     {
         $userId = Auth::id();

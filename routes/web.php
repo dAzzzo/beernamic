@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
     // Rutas del carrito de compras
     Route::group(['prefix' => 'cart'], function () {
         Route::get('/', [CartController::class, 'showCart'])->name('cart.index');
-        Route::get('/cart', [CartController::class, 'index'])->name('cart.show'); // Cambiado el nombre para evitar conflicto
+        Route::get('/cart', [CartController::class, 'index'])->name('cart.show'); 
         Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
         Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');  
     });

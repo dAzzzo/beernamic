@@ -38,7 +38,7 @@
           </div>
         </div>
         @else
-        <a class="user-panel">
+        <div class="user-panel">
         <a href="{{ route('perfil.index') }}"><button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button></a>
           <div id="userOptions" class="options">
           <form id="logout-form" action="{{ route('logout') }}" method="POST">

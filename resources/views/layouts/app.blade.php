@@ -42,7 +42,7 @@
                     </div>
                     @else
                     <div class="user-panel">
-                        <button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button>
+                    <a href="{{ route('perfil.index') }}"><button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button></a>
                         <div id="userOptions" class="options">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf
@@ -62,6 +62,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+
+        <!-- También puedo añadirle el footer AQUÍ -->
     </div>
 
     <script>
