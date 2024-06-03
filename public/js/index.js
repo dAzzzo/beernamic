@@ -36,3 +36,8 @@ function toggleUserPanel() {
   }
 }
 
+
+    function toggleUserPanel() {
+      var options = document.getElementById("userOptions");
+      options.style.display = options.style.display === "block" ? "none" : "block";
+    }

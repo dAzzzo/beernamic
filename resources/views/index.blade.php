@@ -23,7 +23,6 @@
     <a href="{{ route('index') }}">
       <img class="logoFoto" src="{{ asset('img/LogoBeernamic4.png') }}" alt="Logo Beernamic">
     </a>
-    <!-- Este es el primer navbar visible -->
     <div class='menu'>
       <nav>
         <a href="{{ route('productos.index') }}"><button><span class="box">Productos</span></button></a> |
@@ -39,8 +38,8 @@
           </div>
         </div>
         @else
-        <div class="user-panel">
-        <button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button>
+        <a class="user-panel">
+        <a href="{{ route('perfil.index') }}"><button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button></a>
           <div id="userOptions" class="options">
           <form id="logout-form" action="{{ route('logout') }}" method="POST">
             @csrf
