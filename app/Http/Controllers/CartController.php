@@ -46,7 +46,7 @@ class CartController extends Controller
         $userId = Auth::id();
         $productId = $request->input('id');
 
-        Cart::where('UserID', $userId)->where('ProductoID', $productId)->delete();
+        Cart::where('UserID', $userId)->where('id', $productId)->delete();
 
         return redirect()->route('cart.index');
     }

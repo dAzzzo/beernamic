@@ -8,7 +8,7 @@
 
 .listaProducto-container table {
     width: 100%;
-    /* border-collapse: collapse; */
+ 
 }
 
 .listaProducto-container th {
@@ -33,9 +33,7 @@
 
 .listaProducto-container img {
     max-width: 100px;
-    /* Tamaño máximo deseado */
     max-height: 200px;
-    /* Tamaño máximo deseado */
     width: auto;
     height: auto;
 }
@@ -43,9 +41,7 @@
 
 .listaProducto-container .card {
     width: 100px;
-    /* Ancho de la imagen */
     height: 200px;
-    /* Altura de la imagen */
     overflow: hidden;
 }
 
@@ -53,7 +49,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Para mantener la proporción de la imagen */
 }
 
 /* Estilos adicionales para la paginación */
