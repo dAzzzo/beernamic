@@ -93,7 +93,6 @@
 
 
 
-        <!-- Contenido principal -->
         <div class="listaProducto-container">
 
             <!-- Botón para agregar un nuevo producto -->

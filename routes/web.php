@@ -43,12 +43,11 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Rutas para el administrador
-    Route::middleware(['admin'])->group(function () {
-        Route::put('/productos/{producto}', [ProductosController::class, 'update'])->name('productos.update');
+         Route::put('/productos/{producto}', [ProductosController::class, 'update'])->name('productos.update');
         Route::delete('/productos/{producto}', [ProductosController::class, 'destroy'])->name('productos.destroy');
         Route::post('/productos', [ProductosController::class, 'store'])->name('productos.store');
         Route::get('/productos/create', [ProductosController::class, 'create'])->name('productos.create');
-    });
+   
 
     // Otras rutas que cualquier usuario autenticado puede acceder, en este caso es el usuario, que aparece cuando pulsas en "Hola, <nombre de usuario>"
     Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil.index');

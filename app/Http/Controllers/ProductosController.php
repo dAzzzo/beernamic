@@ -14,7 +14,7 @@ class ProductosController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin')->except(['index', 'show']);
+       
     }
     
    
@@ -126,6 +126,8 @@ class ProductosController extends Controller
      */
     public function update(Request $request, Producto $producto): RedirectResponse
     {
+
+  
         $request->validate([
             'marca' => 'required|string|max:255',
             'variedad' => 'required|string|max:255',
