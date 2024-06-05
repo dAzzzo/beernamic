@@ -67,7 +67,7 @@
         <p>¡Tu carrito está vacío!</p>
         @endif
 
-        <a href="{{ url('/productos') }}" class="botonSeguirComprando">Sigue comprando...</a>
+        <a href="{{ url('/productos') }}" class="botonSeguirComprando">Sigue comprando . . .</a>
     </div>
     @endsection
 </main>

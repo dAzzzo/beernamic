@@ -6,9 +6,11 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\VerificationController;
 
 // Rutas de autenticación generadas por Laravel
-Auth::routes();
+//con el parentesis envuelve las rutas de autenticación con el middleware verified
+Auth::routes(['verify' => true]);
 
 // Ruta pública: Página de inicio
 Route::get('/', function () {
@@ -28,6 +30,9 @@ Route::get('/sobre-nosotros', function () {
 Route::get('/para-aprender', function () {
     return view('para-aprender');
 })->name('para-aprender');
+
+// Ruta para la verificación de correo electrónico
+Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
 
 // Ruta pública: Página de inicio para usuarios autenticados (HomeController)
 Route::get('/home', [HomeController::class, 'index'])->name('home');

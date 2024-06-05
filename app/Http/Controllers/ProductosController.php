@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductosController extends Controller
 {
@@ -74,6 +75,7 @@ class ProductosController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        
         $request->validate([
             'marca' => 'required|string|max:255',
             'variedad' => 'required|string|max:255',
@@ -82,17 +84,20 @@ class ProductosController extends Controller
             'Img' => 'required|image',
         ]);
 
-        $imagePath = $request->file('Img')->store('cervezas', 'public');
+$imagePath = $request->Img->store('img/cervezas', 'public');
+
+        $url = Storage::url($imagePath);
 
         Producto::create([
             'marca' => $request->marca,
             'variedad' => $request->variedad,
             'precio' => $request->precio,
             'stock' => $request->stock,
-            'Img' => basename($imagePath),
+            'Img' => basename($url),
         ]);
 
         return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente.');
+        
     }
 
      /**

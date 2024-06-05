@@ -98,7 +98,7 @@
             <!-- Botón para agregar un nuevo producto -->
             @if(Auth::check() && Auth::user()->role == 'admin')
             <div class="add">
-                <form class="addition" action="{{ route('productos.store') }}" method="POST">
+                <form class="addition" action="{{ route('productos.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="text" name="marca" placeholder="Marca" required>
                     <input type="text" name="variedad" placeholder="Variedad" required>
@@ -130,7 +130,7 @@
                     <tr>
                         <td>
                             <a href="{{ route('producto.show', $producto->id) }}">
-                                <img src="{{ asset('img/cervezas/' . $producto->Img) }}"
+                                <img src="{{ asset('storage/img/cervezas/' . $producto->Img) }}"
                                     alt="Imagen de {{ $producto->marca }}" width="100">
                             </a>
                         </td>
