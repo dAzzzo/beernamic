@@ -46,6 +46,8 @@
     <link rel="stylesheet" href="{{ asset('css/botones.css') }}">
     <link rel="stylesheet" href="{{ asset('css/card.css') }}">
 
+   
+
 
     <link rel="icon" href="{{ asset('img/LogoBeernamic2.png') }}" type="image/x-icon">
 </head>
@@ -106,8 +108,9 @@
                     <button type="submit" class="btn btn-primary"> <img src="{{ asset('img/carritoBlanco.png') }}" class="button" style="width: 50px; height: auto;"
                         alt="Añadir al carrito"></button>
             </form>
-            <img src="{{ asset('img/comprarBlanco.png') }}" class="button" style="width: 50px; height: auto;"
-                alt="Comprar producto">
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=YOUR_PAYPAL_BUSINESS_EMAIL&item_name=Nombre+del+producto&amount=0.01&currency_code=USD&return=http://tusitio.com/confirmacion&cancel_return=http://tusitio.com/cancelacion" target="_blank">
+                 <img src="{{ asset('img/comprarBlanco.png') }}" alt="Comprar producto" style="width: 50px; height: auto;">
+            </a>
         </div>
     </main>
 

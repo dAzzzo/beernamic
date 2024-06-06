@@ -23,45 +23,46 @@
 
 <body>
 
-<header>
-    <a href="{{ route('index') }}">
-      <img class="logoFoto" src="{{ asset('img/LogoBeernamic4.png') }}" alt="Logo Beernamic">
-    </a>
-    <!-- Este es el primer navbar visible -->
-    <div class='menu'>
-      <nav>
-        <a href="{{ route('productos.index') }}"><button><span class="box">Productos</span></button></a> |
-        <a href="{{ route('sobre-nosotros') }}"><button><span class="box">Sobre nosotros</span></button></a> |
-        <a href="{{ route('para-aprender') }}"><button><span class="box">Para aprender</span></button></a> |
+    <header>
+        <a href="{{ route('index') }}">
+            <img class="logoFoto" src="{{ asset('img/LogoBeernamic4.png') }}" alt="Logo Beernamic">
+        </a>
+        <!-- Este es el primer navbar visible -->
+        <div class='menu'>
+            <nav>
+                <a href="{{ route('productos.index') }}"><button><span class="box">Productos</span></button></a> |
+                <a href="{{ route('sobre-nosotros') }}"><button><span class="box">Sobre nosotros</span></button></a> |
+                <a href="{{ route('para-aprender') }}"><button><span class="box">Para aprender</span></button></a> |
 
-        @guest
-        <div class="user-panel">
-          <button class="user-button" onclick="toggleUserPanel()">Usuario</button>
-          <div id="userOptions" class="options">
-            <a href="{{ route('login') }}"><button>Iniciar Sesión</button></a>
-            <a href="{{ route('register') }}"><button>Registrarse</button></a>
-          </div>
+                @guest
+                <div class="user-panel">
+                    <button class="user-button" onclick="toggleUserPanel()">Usuario</button>
+                    <div id="userOptions" class="options">
+                        <a href="{{ route('login') }}"><button>Iniciar Sesión</button></a>
+                        <a href="{{ route('register') }}"><button>Registrarse</button></a>
+                    </div>
+                </div>
+                @else
+                <div class="user-panel">
+                    <a href="{{ route('perfil.index') }}"><button class="user-button" onclick="toggleUserPanel()">Hola,
+                            {{ Auth::user()->name }}</button></a>
+                    <div id="userOptions" class="options">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit">{{ __('Logout') }}</button>
+                        </form>
+                    </div>
+                </div>
+                @endguest
+
+
+                <a href="{{ route('cart.index') }}"><button class="button">
+                        <img src="{{ asset('img/carritoBlanco.png') }}" class="cart-icon" alt="Carrito de compras">
+                    </button></a>
+            </nav>
         </div>
-        @else
-        <div class="user-panel">
-        <a href="{{ route('perfil.index') }}"><button class="user-button" onclick="toggleUserPanel()">Hola, {{ Auth::user()->name }}</button></a>
-          <div id="userOptions" class="options">
-          <form id="logout-form" action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit">{{ __('Logout') }}</button>
-          </form>
-          </div>
-        </div>
-        @endguest
+    </header>
 
-
-        <a href="{{ route('cart.index') }}"><button class="button">
-            <img src="{{ asset('img/carritoBlanco.png') }}" class="cart-icon" alt="Carrito de compras">
-          </button></a>
-      </nav>
-    </div>
-</header>
-  
     <div class="search-bar">
         <!-- Formulario para filtrar por marca y variedad -->
         <form action="{{ route('productos.index') }}" method="GET">
@@ -98,13 +99,14 @@
             <!-- Botón para agregar un nuevo producto -->
             @if(Auth::check() && Auth::user()->role == 'admin')
             <div class="add">
-                <form class="addition" action="{{ route('productos.store') }}" method="POST" enctype="multipart/form-data">
+                <form class="addition" action="{{ route('productos.store') }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <input type="text" name="marca" placeholder="Marca" required>
                     <input type="text" name="variedad" placeholder="Variedad" required>
                     <input type="number" name="precio" placeholder="Precio">
                     <input type="number" name="stock" placeholder="Stock">
-                    <input type="file" name="Img" id="Img" accept="image/*" >
+                    <input type="file" name="Img" id="Img" accept="image/*">
                     <button type="submit" class="check">Agregar producto</button>
                 </form>
             </div>
@@ -130,10 +132,16 @@
                     <tr>
                         <td>
                             <a href="{{ route('producto.show', $producto->id) }}">
+                                @if (Storage::disk('public')->exists('img/cervezas/' . $producto->Img))
                                 <img src="{{ asset('storage/img/cervezas/' . $producto->Img) }}"
                                     alt="Imagen de {{ $producto->marca }}" width="100">
+                                @else
+                                <img src="{{ asset('img/cervezas/' . $producto->Img) }}"
+                                    alt="Imagen de {{ $producto->marca }}" width="100">
+                                @endif
                             </a>
                         </td>
+
                         <td>{{ $producto->marca }}</td>
                         <td>{{ $producto->variedad }}</td>
                         <td>{{ $producto->precio }} €</td>
