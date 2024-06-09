@@ -4,7 +4,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
-  background-color: #f8f8f8; /* Color base */
+  background-color: #f8f8f8; 
 }
 
 .accordion__toggle {
@@ -12,8 +12,8 @@
   padding: 15px;
   text-align: center;
   cursor: pointer;
-  background-color: #f89b29; /* Color base */
-  color: #fff; /* Color de texto */
+  background-color: #f89b29; 
+  color: #fff;
 }
 
 .accordion__content {
@@ -46,10 +46,9 @@
     transition: all 0.3s ease;
   }
   .accordion__toggle.active {
-    background-color: #ccc; /* Color de fondo al abrir */
+    background-color: #A66E29; 
   }
   
-  /* Centrar las imágenes de dos en dos */
   .accordion__content a:nth-child(odd) {
     text-align: right;
   }
@@ -58,7 +57,6 @@
     text-align: left;
   }
   
-  /* Centrar la última imagen */
   .accordion__content a:last-child {
     text-align: center;
   }

@@ -14,7 +14,21 @@
 
   <link rel="icon" href="{{ asset('img/LogoBeernamic2.png') }}" type="image/x-icon">
 
+<style>
+  /* animations.css */
 
+.fade-in-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+</style>
 
 </head>
 
@@ -75,49 +89,54 @@
       </div>
     </div>
 
-    <h2>La historia de las cervezas</h2>
+    <section class="intro">
+      <h2>Bienvenidos a Beernamic</h2>
+      <p>Explora la diversidad y riqueza de las cervezas artesanales. Aquí encontrarás información sobre nuestros productos, la historia de la cerveza, y eventos destacados.</p>
+    </section>
 
-    <div class="card-row">
-      <div class="card">
-        <img src="{{ asset('img/fotoCervezas1.jpg') }}" alt="fotoCervezas1">
-        <div class="card__content">
-          <p class="card__title">Cerveza 1</p>
-          <p class="card__description">La historia de la cerveza se remonta a tiempos antiguos. Se cree que la cerveza
-            fue uno de los primeros productos de la fermentación que los humanos llevaron a cabo. La cerveza era una
-            bebida común en muchas culturas antiguas y se elaboraba con ingredientes como la cebada, el trigo, el lúpulo
-            y el agua.</p>
+    <section class="info-section fade-in-scroll">
+      <h2>Nuestros Productos</h2>
+      <div class="info-content">
+        <img src="{{ asset('img/cerveza.webp') }}" alt="fotoCervezas1">
+        <div class="text-content">
+          <h3>Variedad de Cervezas</h3>
+          <p>Descubre una variedad de cervezas artesanales, cada una con su propio carácter y sabor único. Desde las cervezas rubias más ligeras hasta las oscuras y robustas.</p>
         </div>
       </div>
+    </section>
 
-      <div class="text-right">
-        <h3>La cerveza en la antigüedad</h3>
-        <p>La cerveza ha sido una bebida apreciada desde tiempos remotos. En la antigüedad, era consumida en rituales
-          religiosos y celebraciones festivas. Los primeros registros de producción de cerveza datan de hace más de 5000
-          años, y se han encontrado vestigios en antiguas civilizaciones como la Mesopotamia y el antiguo Egipto.</p>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="text-left">
-        <h3>La cerveza en la actualidad</h3>
-        <p>Hoy en día, la cerveza es una de las bebidas más populares en el mundo. Existen una gran variedad de estilos
-          y sabores, desde las tradicionales cervezas alemanas hasta las innovadoras cervezas artesanales. La industria
-          cervecera ha experimentado un crecimiento significativo en las últimas décadas, y la cultura cervecera sigue
-          siendo una parte importante de muchas sociedades.</p>
-      </div>
-
-      <div class="card">
-        <img src="{{ asset('img/fotoCervezas2.jpg') }}" alt="fotoCervezas2">
-        <div class="card__content">
-          <p class="card__title">Cerveza 2</p>
-          <p class="card__description">Las primeras evidencias de la producción de cerveza se remontan a la antigua
-            Mesopotamia, donde se han encontrado registros que datan de al menos 5.000 años atrás. La cerveza era una
-            parte importante de la vida cotidiana en la antigua Mesopotamia y se consumía tanto en ceremonias religiosas
-            como en la vida diaria. A lo largo de la historia, la cerveza ha evolucionado y se ha convertido en una
-            bebida con una amplia variedad de estilos y sabores.</p>
+    <section class="info-section fade-in-scroll">
+      <h2>La Historia de la Cerveza</h2>
+      <div class="info-content">
+        <img src="{{ asset('img/homer.webp') }}" alt="Historia de la cerveza">
+        <div class="text-content">
+          <h3>La Cerveza en la Antigüedad</h3>
+          <p>Conoce la fascinante historia de la cerveza, desde sus orígenes en la antigua Mesopotamia hasta su evolución y popularidad en la actualidad.</p>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section class="info-section fade-in-scroll">
+      <h2>Estilos de Cerveza</h2>
+      <div class="info-content">
+        <img src="{{ asset('img/dino.webp') }}" alt="Estilos de cerveza">
+        <div class="text-content">
+          <h3>Variedad de Estilos</h3>
+          <p>Explora los diferentes estilos de cerveza, desde las lagers ligeras y refrescantes hasta las ales robustas y complejas. Cada estilo ofrece una experiencia única.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section fade-in-scroll">
+      <h2>Eventos y Degustaciones</h2>
+      <div class="info-content">
+        <img src="{{ asset('img/funnyBeer.webp') }}" alt="Eventos de degustación">
+        <div class="text-content">
+          <h3>Participa en Nuestros Eventos</h3>
+          <p>Participa en nuestros eventos y degustaciones para experimentar de primera mano la calidad y sabor de nuestras cervezas.</p>
+        </div>
+      </div>
+    </section>
 
     <div class="accordion">
       <div class="accordion__toggle">Marcas de cerveza</div>
@@ -185,6 +204,22 @@
       var options = document.getElementById("userOptions");
       options.style.display = options.style.display === "block" ? "none" : "block";
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const sections = document.querySelectorAll('.fade-in-scroll');
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
   </script>
   <script src="{{ asset('js/index.js') }}"></script>
 </body>
