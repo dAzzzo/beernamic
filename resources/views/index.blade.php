@@ -14,21 +14,6 @@
 
   <link rel="icon" href="{{ asset('img/LogoBeernamic2.png') }}" type="image/x-icon">
 
-<style>
-  /* animations.css */
-
-.fade-in-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.fade-in-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-</style>
 
 </head>
 
@@ -71,6 +56,21 @@
     </div>
   </header>
 
+  <div id="age-modal">
+        <div id="age-modal-content">
+            <h2>Verificación de Edad</h2>
+            <p>Por favor, ingresa tu fecha de nacimiento</p>
+            <div>
+                <input type="number" id="day" class="modal-input" placeholder="Día" min="1" max="31">
+                <input type="number" id="month" class="modal-input" placeholder="Mes" min="1" max="12">
+                <input type="number" id="year" class="modal-input" placeholder="Año" min="1900" max="2023">
+            </div>
+            <button class="modal-button" onclick="checkAge()">Ingresar</button>
+            <p id="error-message" class="modal-error">Debes tener 18 años o más para entrar.</p>
+        </div>
+    </div>
+
+
   <main>
     <div class="carousel-container">
       <div class="carousel">
@@ -88,6 +88,8 @@
         </div>
       </div>
     </div>
+
+    <div class="content-wrapper">
 
     <section class="intro">
       <h2>Bienvenidos a Beernamic</h2>
@@ -137,6 +139,7 @@
         </div>
       </div>
     </section>
+</div>
 
     <div class="accordion">
       <div class="accordion__toggle">Marcas de cerveza</div>

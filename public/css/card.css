@@ -2,13 +2,13 @@
 .card-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px; /* Espacio entre las filas de tarjetas */
+  margin-bottom: 20px; 
 }
 
 /* Estilos de las tarjetas */
 .card {
-  width: 350px; /* Ajusta el ancho de las tarjetas */
-  height: 250px; /* Ajusta la altura de las tarjetas */
+  width: 350px; 
+  height: 250px; 
   background: #A66E29;
   border-radius: 10px;
   overflow: hidden;
@@ -16,8 +16,6 @@
 }
 
 .card:hover {
-  /* Comentamos la transformación para mantener la imagen estática */
-  /* transform: rotate(-5deg) scale(1.1); */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -34,14 +32,14 @@
 
 .card__title {
   margin: 0;
-  font-size: 24px; /* Ajusta el tamaño del título */
+  font-size: 24px; 
   color: #333;
   font-weight: 700;
 }
 
 .card__description {
   margin: 10px 0 0;
-  font-size: 16px; /* Ajusta el tamaño del texto */
+  font-size: 16px;
   color: #777;
   line-height: 1.4;
 }
@@ -106,4 +104,11 @@
 .info-content img {
   max-width: 200px;
   margin-right: 20px;
+}
+
+
+.content-wrapper {
+  background-color: #732002; 
+  padding: 20px; 
+  border-radius: 10px; 
 }

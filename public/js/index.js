@@ -1,17 +1,3 @@
-//Ya no se usa el siguiente script
-
-// // JavaScript para cambiar el color de fondo del header al hacer scroll
-// window.addEventListener('scroll', function () {
-//   var header = document.querySelector('header');
-//   var scrollPosition = window.scrollY;
-
-//   // Cambiar el color de fondo del header basado en la posición de scroll
-//   if (scrollPosition > 0) {
-//     header.style.backgroundColor = 'rgba(166, 110, 41, 0.8)'; // Translúcido
-//   } else {
-//     header.style.backgroundColor = '#A66E29'; // Sólido
-//   }
-// });
 
 
 
@@ -37,10 +23,85 @@ function toggleUserPanel() {
 }
 
 
+//js para el boton de usuario
     function toggleUserPanel() {
       var options = document.getElementById("userOptions");
       options.style.display = options.style.display === "block" ? "none" : "block";
     }
 
 
- 
+// Función para establecer una cookie
+function setCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+  const expires = "expires=" + d.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Función para obtener una cookie
+function getCookie(name) {
+  const cname = name + "=";
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const ca = decodedCookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(cname) == 0) {
+      return c.substring(cname.length, c.length);
+    }
+  }
+  return "";
+}
+
+// Verificación de edad
+function checkAge() {
+  const day = document.getElementById('day').value;
+  const month = document.getElementById('month').value;
+  const year = document.getElementById('year').value;
+
+  if (!day || !month || !year) {
+    showError('Por favor, completa todos los campos.');
+    return;
+  }
+
+  const birthDate = new Date(year, month - 1, day);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  const dayDiff = today.getDate() - birthDate.getDate();
+
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    age--;
+  }
+
+  if (age >= 18) {
+    setCookie('ageVerified', 'true', 2); 
+    document.getElementById('age-modal').style.display = 'none';
+    document.getElementById('main-content').classList.remove('blur-background');
+  } else {
+    showError('Debes tener 18 años o más para entrar.');
+  }
+}
+
+// Función para mostrar el mensaje de error
+function showError(message) {
+  const errorMessage = document.getElementById('error-message');
+  errorMessage.textContent = message;
+  errorMessage.style.display = 'block';
+}
+
+// Función para iniciar la verificación de edad
+function initAgeVerification() {
+  const ageVerified = getCookie('ageVerified');
+  if (!ageVerified || ageVerified !== 'true') {
+    document.getElementById('age-modal').style.display = 'flex';
+    document.getElementById('main-content').classList.add('blur-background');
+  } else {
+    document.getElementById('age-modal').style.display = 'none';
+    document.getElementById('main-content').classList.remove('blur-background');
+  }
+}
+
+window.onload = initAgeVerification;

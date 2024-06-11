@@ -1,14 +1,14 @@
 
 /* Estilos para el footer */
 footer {
-  background-color: #A66E29; /* Amarillo */
-  color: #732002; /* Marrón */
+  background-color: #A66E29; 
+  color: #732002; 
   padding: 10px 0;
   text-align: center;
   width: 100%;
   bottom: 0;
   font-family: var(--tertiary-font-names);
-  margin-top: auto; /* Ajusta el margen superior */
+  margin-top: auto; 
 }
 
   
@@ -43,7 +43,7 @@ footer {
   }
   
   .quick-links ul li a {
-    color: #732002; /* Marrón */
+    color: #732002; 
     text-decoration: none;
   }
   
@@ -61,6 +61,6 @@ footer {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
-    color: #732002; /* Marrón */
+    color: #732002; 
   }
   

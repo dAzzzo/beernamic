@@ -3,7 +3,10 @@ body {
   padding: 0;
 }
 
-
+h2,
+p{
+  color: white;
+}
 
 /* Variables de tipografía */
 :root {
@@ -22,7 +25,6 @@ body {
 .carousel {
   display: flex;
   animation: carousel-animation 70s linear infinite;
-  /* Cambia la duración y el tiempo de animación según tus necesidades */
   margin-top: 2em;
 }
 
@@ -45,8 +47,79 @@ body {
 
 }
 
-/* Ajusta el tamaño de las imágenes según sea necesario */
+/* Ajustar el tamaño de las imágenes */
 .slide img {
   width: 15%;
   height: auto;
+}
+
+/* Verificación de edad */
+#age-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#age-modal-content {
+  background-color: #a66e29;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-input {
+  margin: 10px 0;
+  padding: 10px;
+  width: calc(33.33% - 20px);
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.modal-button {
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #F2C166;
+  color: white;
+  font-size: 16px;
+}
+
+.modal-error {
+  color: red;
+  display: none;
+}
+
+.blur-background {
+  filter: blur(5px);
+}
+
+
+ /* aniamciones de imagenes */
+
+ .fade-in-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
