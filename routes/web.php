@@ -21,6 +21,8 @@ Route::get('/', function () {
 Route::get('/productos', [ProductosController::class, 'index'])->name('productos.index');
 Route::get('/producto/{producto}', [ProductosController::class, 'show'])->name('producto.show');
 
+
+
 // Ruta pública: Sobre nosotros
 Route::get('/sobre-nosotros', function () {
     return view('sobre-nosotros');
@@ -34,8 +36,7 @@ Route::get('/para-aprender', function () {
 // Ruta para la verificación de correo electrónico
 Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
 
-// Ruta pública: Página de inicio para usuarios autenticados (HomeController)
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 
 // Rutas que requieren autenticación
 Route::middleware(['auth'])->group(function () {
@@ -47,16 +48,16 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');  
     });
 
-    // Rutas para el administrador
-         Route::put('/productos/{producto}', [ProductosController::class, 'update'])->name('productos.update');
-        Route::delete('/productos/{producto}', [ProductosController::class, 'destroy'])->name('productos.destroy');
-        Route::post('/productos', [ProductosController::class, 'store'])->name('productos.store');
-        Route::get('/productos/create', [ProductosController::class, 'create'])->name('productos.create');
-   
+      // Rutas para el crud de productos
+    Route::put('/productos/{producto}', [ProductosController::class, 'update'])->name('productos.update');
+    Route::delete('/productos/{producto}', [ProductosController::class, 'destroy'])->name('productos.destroy');
+    Route::post('/productos', [ProductosController::class, 'store'])->name('productos.store');
+    Route::get('/productos/create', [ProductosController::class, 'create'])->name('productos.create');
 
     // Otras rutas que cualquier usuario autenticado puede acceder, en este caso es el usuario, que aparece cuando pulsas en "Hola, <nombre de usuario>"
     Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil.index');
 });
+
 
 // Ruta para el logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');

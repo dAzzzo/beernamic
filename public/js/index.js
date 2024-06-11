@@ -105,3 +105,24 @@ function initAgeVerification() {
 }
 
 window.onload = initAgeVerification;
+
+// animacion para los cards para-aprender
+document.addEventListener('DOMContentLoaded', function() {
+  var elements = document.querySelectorAll('.fade-in-scroll');
+
+  function checkVisibility() {
+      var windowHeight = window.innerHeight;
+
+      elements.forEach(function(element) {
+          var rect = element.getBoundingClientRect();
+          if (rect.top < windowHeight - 50) {
+              element.classList.add('visible');
+          }
+      });
+  }
+
+  window.addEventListener('scroll', checkVisibility);
+  window.addEventListener('resize', checkVisibility);
+
+  checkVisibility(); // Initial check
+});

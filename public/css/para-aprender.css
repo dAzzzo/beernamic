@@ -5,6 +5,7 @@ body {
 
 main {
     margin-top: 100px;
+    margin: 20px;
 }
 
 .section {
@@ -45,3 +46,50 @@ main {
     margin-bottom: 30px;
 }
 
+/* animations.css */
+
+.fade-in-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  
+  .fade-in-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Estilos adicionales para la presentación de contenido */
+  .info-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .info-content img {
+    max-width: 200px;
+    margin-right: 20px;
+  }
+  
+  .info-section:nth-child(odd) .info-content {
+    background-color: #732002; 
+  }
+  
+  .info-section:nth-child(even) .info-content {
+    background-color: #401201; 
+  }
+  
+  .info-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 20px; 
+    border-radius: 10px;
+    color: #fff;
+  }
+  
+  .info-content img {
+    max-width: 200px;
+    margin-right: 20px;
+  }
+  

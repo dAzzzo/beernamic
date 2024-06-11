@@ -1,3 +1,11 @@
+/* Esto afecta a todo el codigo, hace que tanto el footer como el header no tengan ese espacio vacio */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+
 /* Estilos para el header */
 header {
   background-color: #a66e2900; 

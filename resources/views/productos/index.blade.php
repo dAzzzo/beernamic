@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/botones.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/card.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/tablaProductos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cardProductos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pagina.css') }}">
     <link rel="stylesheet" href="{{ asset('css/crudProductos.css') }}">
 
 
@@ -91,11 +91,7 @@
     </div>
 
     <main>
-
-
-
-        <div class="listaProducto-container">
-
+        <div class="product-list-container">
             <!-- Botón para agregar un nuevo producto -->
             @if(Auth::check() && Auth::user()->role == 'admin')
             <div class="add">
@@ -112,76 +108,64 @@
             </div>
             @endif
 
-
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Marca</th>
-                        <th>Variedad</th>
-                        <th>Precio</th>
-                        <th>Stock</th>
-                        @if(Auth::check() && Auth::user()->role == 'admin')
-                        <th>Acciones</th>
-                        @endif
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @foreach($productos as $producto)
-                    <tr>
-                        <td>
-                            <a href="{{ route('producto.show', $producto->id) }}">
-                                @if (Storage::disk('public')->exists('img/cervezas/' . $producto->Img))
-                                <img src="{{ asset('storage/img/cervezas/' . $producto->Img) }}"
-                                    alt="Imagen de {{ $producto->marca }}" width="100">
-                                @else
-                                <img src="{{ asset('img/cervezas/' . $producto->Img) }}"
-                                    alt="Imagen de {{ $producto->marca }}" width="100">
-                                @endif
-                            </a>
-                        </td>
-
-                        <td>{{ $producto->marca }}</td>
-                        <td>{{ $producto->variedad }}</td>
-                        <td>{{ $producto->precio }} €</td>
-                        <td>{{ $producto->stock }}</td>
-
-                        <!-- Si el usuario logeado es admin puede ver y trabajar con esta parte -->
-                        @if(Auth::check() && Auth::user()->role == 'admin')
-                        <td>
-                            <!-- Formulario de edición -->
-                            <form action="{{ route('productos.update', $producto->id) }}" method="POST"
-                                style="display:inline-block;">
-                                @csrf
-                                @method('PUT')
-                                <input type="text" name="marca" value="{{ $producto->marca }}">
-                                <input type="text" name="variedad" value="{{ $producto->variedad }}">
-                                <input type="number" name="precio" value="{{ $producto->precio }}">
-                                <input type="number" name="stock" value="{{ $producto->stock }}">
-                                <button type="submit" class="btn btn-warning">Actualizar</button>
-                            </form>
-
-                            <!-- Formulario de eliminación -->
-                            <form action="{{ route('productos.destroy', $producto->id) }}" method="POST"
-                                style="display:inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                            </form>
-                        </td>
-                        @endif
-                    </tr>
-                    @endforeach
-
-                </tbody>
-
-            </table>
+            <!-- Loop para mostrar los productos como cards -->
+            @foreach($productos as $producto)
+            <div class="card">
+                <a href="{{ route('producto.show', $producto->id) }}">
+                    @if (Storage::disk('public')->exists('img/cervezas/' . $producto->Img))
+                    <img class="card-img-top" src="{{ asset('storage/img/cervezas/' . $producto->Img) }}"
+                        alt="Imagen de {{ $producto->marca }}">
+                    @else
+                    <img class="card-img-top" src="{{ asset('img/cervezas/' . $producto->Img) }}"
+                        alt="Imagen de {{ $producto->marca }}">
+                    @endif
+                </a>
+                <div class="card-body">
+                    <h5 class="card-text">Marca: {{ $producto->marca }}</h5>
+                    <p class="card-text">Variedad: {{ $producto->variedad }}</p>
+                    <p class="card-text">Precio: {{ $producto->precio }} €</p>
+                    <p class="card-text">Stock: {{ $producto->stock }}</p>
+                    <!-- Si el usuario es administrador, mostrar botones de edición y eliminación -->
+                    @if(Auth::check() && Auth::user()->role == 'admin')
+                    <div class="btn-group" role="group">
+                        <!-- Formulario de edición -->
+                        <form action="{{ route('productos.update', $producto->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="marca" value="{{ $producto->marca }}"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="variedad"
+                                    value="{{ $producto->variedad }}" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="precio" value="{{ $producto->precio }}">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="stock" value="{{ $producto->stock }}">
+                            </div>
+                            <button type="submit" class="btn btn-warning">Actualizar</button>
+                        </form>
+                        <!-- Formulario de eliminación -->
+                        <form action="{{ route('productos.destroy', $producto->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </div>
+                    @endif
+                </div>
+            </div>
+            @endforeach
         </div>
+        <!-- Paginación de los productos -->
         <div class="card-body">
             {{ $productos->links() }}
         </div>
     </main>
+
 
 
     <footer>

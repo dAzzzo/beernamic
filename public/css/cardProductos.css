@@ -1,0 +1,61 @@
+/* Estilos de los cards */
+.listaProducto-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    width: calc(50% - 20px); /* Dos cards por línea */
+    margin-bottom: 20px;
+    background: #A66E29;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.card-text {
+    margin: 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.btn-group {
+    margin-top: 10px;
+}
+
+.btn {
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 20px); /* Dos cards por línea en pantallas medianas */
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        width: calc(100% - 20px); /* Un card por línea en pantallas pequeñas */
+    }
+}

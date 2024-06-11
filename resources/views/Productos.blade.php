@@ -16,7 +16,7 @@
 </head>
 
 <body>
-
+<!-- Este producto no sirve para nada, se utiliza el de la carpeta productos llamado index -->
     <header>
         <a href="{{ route('index') }}">
             <img href="{{ route('index') }}" class="logoFoto" src="{{ asset('img/LogoBeernamic4.png') }}"
