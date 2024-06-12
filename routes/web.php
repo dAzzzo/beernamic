@@ -61,3 +61,4 @@ Route::middleware(['auth'])->group(function () {
 
 // Ruta para el logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+

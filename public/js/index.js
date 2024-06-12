@@ -146,3 +146,10 @@ document.addEventListener("DOMContentLoaded", function() {
       observer.observe(card);
   });
 });
+
+//Pasarela de pago de paypal
+  paypal.HostedButtons({
+    hostedButtonId: "WA2BTYKW39N4N",
+  }).render("#paypal-container-WA2BTYKW39N4N")
+
+  

@@ -47,6 +47,7 @@
     <link rel="stylesheet" href="{{ asset('css/card.css') }}">
 
    
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAu35SaqY0Ks0gLnSgH_V7zZ4diee1DZesdFyZ7-lRnehQhVi91dFAHbZZujFPQRG7j8mRyBLzwWLcGEg&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
 
 
     <link rel="icon" href="{{ asset('img/LogoBeernamic2.png') }}" type="image/x-icon">
@@ -111,9 +112,9 @@
                     <button type="submit" class="btn btn-primary"> <img src="{{ asset('img/carritoBlanco.png') }}" class="button" style="width: 50px; height: auto; animation: none;"
                         alt="Añadir al carrito"></button>
             </form>
-            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=YOUR_PAYPAL_BUSINESS_EMAIL&item_name=Nombre+del+producto&amount=0.01&currency_code=USD&return=http://tusitio.com/confirmacion&cancel_return=http://tusitio.com/cancelacion" target="_blank">
-                 <img src="{{ asset('img/comprarBlanco.png') }}" alt="Comprar producto" style="width: 50px; height: auto; animation: none;">
-            </a>
+            <!-- Boton conectado a paypal -->
+            <div id="paypal-container-WA2BTYKW39N4N"></div>
+
         </div>
     </main>
 
