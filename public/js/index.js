@@ -124,5 +124,25 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('scroll', checkVisibility);
   window.addEventListener('resize', checkVisibility);
 
-  checkVisibility(); // Initial check
+  checkVisibility(); 
+});
+
+//Animación para los cards de productos, cuando "observas" el producto realiza la función
+document.addEventListener("DOMContentLoaded", function() {
+  const cards = document.querySelectorAll('.card');
+
+  const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);  
+          }
+      });
+  }, {
+      threshold: 0.1
+  });
+
+  cards.forEach(card => {
+      observer.observe(card);
+  });
 });

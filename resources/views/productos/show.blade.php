@@ -96,7 +96,10 @@
     <main>
         <div class="producto-detalles">
             <h1>{{ $producto->marca }} - {{ $producto->variedad }}</h1>
-            <img src="{{ asset('img/cervezas/' . $producto->Img) }}" alt="Imagen de {{ $producto->marca }}">
+            <div class="imagen-container">
+                 <img class="producto-imagen" src="{{ asset('img/cervezas/' . $producto->Img) }}" alt="Imagen de {{ $producto->marca }}">
+                 <div class="shadow"></div>
+            </div>
             <p><strong>Precio:</strong> {{ $producto->precio }} €</p>
             <p><strong>Stock:</strong> {{ $producto->stock }}</p>
             <p><strong>Descripción:</strong> {{ $producto->Descripcion }}</p>
@@ -105,11 +108,11 @@
                  @csrf
                     <input type="hidden" name="id" value="{{ $producto->id }}">
                     <input type="number" name="quantity" value="1" min="1">
-                    <button type="submit" class="btn btn-primary"> <img src="{{ asset('img/carritoBlanco.png') }}" class="button" style="width: 50px; height: auto;"
+                    <button type="submit" class="btn btn-primary"> <img src="{{ asset('img/carritoBlanco.png') }}" class="button" style="width: 50px; height: auto; animation: none;"
                         alt="Añadir al carrito"></button>
             </form>
             <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=YOUR_PAYPAL_BUSINESS_EMAIL&item_name=Nombre+del+producto&amount=0.01&currency_code=USD&return=http://tusitio.com/confirmacion&cancel_return=http://tusitio.com/cancelacion" target="_blank">
-                 <img src="{{ asset('img/comprarBlanco.png') }}" alt="Comprar producto" style="width: 50px; height: auto;">
+                 <img src="{{ asset('img/comprarBlanco.png') }}" alt="Comprar producto" style="width: 50px; height: auto; animation: none;">
             </a>
         </div>
     </main>

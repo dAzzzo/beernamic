@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/botones.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cardProductos.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/pagina.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/crudProductos.css') }}">
 
 
@@ -161,7 +161,7 @@
             @endforeach
         </div>
         <!-- Paginación de los productos -->
-        <div class="card-body">
+        <div class="pagination">
             {{ $productos->links() }}
         </div>
     </main>

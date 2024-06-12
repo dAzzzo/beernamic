@@ -113,3 +113,70 @@
   border-radius: 10px; 
   margin: 20px;
 }
+
+
+/* Estilo para la imagen y la sombra */
+.producto-detalles {
+  text-align: center; /* Centrar el contenido */
+}
+
+.producto-detalles img {
+  width: 300px; /* Tamaño de la imagen */
+  animation: float 3s ease-in-out infinite; /* Animación de flotación */
+  display: block;
+  margin: 0 auto; /* Centrar la imagen */
+}
+
+
+
+.producto-detalles .shadow {
+  width: 40%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.3); /* Color de la sombra */
+  border-radius: 50%; /* Hacer que la sombra sea un óvalo */
+  margin: 10px auto; /* Centrar la sombra */
+  animation: shadowFloat 3s ease-in-out infinite; /* Animación de flotación */
+}
+
+@keyframes float {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+}
+
+@keyframes shadowFloat {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(0.9);
+  }
+}
+
+/* Opcional: Estilos adicionales para mejorar la presentación */
+.producto-detalles h1 {
+  margin-bottom: 20px;
+}
+
+.producto-detalles p {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.producto-detalles form {
+  margin-top: 20px;
+}
+
+.producto-detalles form input[type="number"] {
+  width: 60px;
+  margin-right: 10px;
+}
+
+.producto-detalles .btn-primary {
+  display: inline-block;
+  vertical-align: middle;
+}
+ 
