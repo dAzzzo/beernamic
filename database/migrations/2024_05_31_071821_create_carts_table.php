@@ -8,6 +8,7 @@ class CreateCartsTable extends Migration
 {
     public function up()
     {
+        if (!Schema::hasTable('carts')) {
         Schema::create('carts', function (Blueprint $table) {
             $table->increments('CarritoID');
             $table->unsignedBigInteger('UserID');
@@ -19,6 +20,7 @@ class CreateCartsTable extends Migration
             $table->foreign('id')->references('id')->on('productos')->onDelete('cascade');
         });
     }
+}
 
     public function down()
     {
