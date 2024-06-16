@@ -91,7 +91,7 @@
     </div>
 
     <main>
-        <div class="product-list-container">
+        
             <!-- Botón para agregar un nuevo producto -->
             @if(Auth::check() && Auth::user()->role == 'admin')
             <div class="add">
@@ -108,6 +108,7 @@
             </div>
             @endif
 
+            <div class="product-list-container">
             <!-- Loop para mostrar los productos como cards -->
             @foreach($productos as $producto)
             <div class="card">

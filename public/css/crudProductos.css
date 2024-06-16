@@ -8,24 +8,26 @@
 }
 
 .btn-warning {
-    background-color: #732002;
+    background-color: orange;
     color: #fff;
 }
 
 .btn-warning:hover {
-    background-color: #99310b;
+    background-color: darkorange;
 }
 
 .btn-danger {
-    background-color: #401201;
+    background-color: red;
     color: #fff;
 }
 
 .btn-danger:hover {
-    background-color: #72260a;
+    background-color: rgb(177, 0, 0);
 }
 
-/* Estilos para los formularios en línea */
+
+
+/* Añadir producto */
 .addition {
     display: inline-block;
     margin-right: 5px;
@@ -37,19 +39,20 @@
     border-radius: 5px;
 }
 
-.add{
+.add {
     background-color: #A66E29;
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
+    margin: 20px;
 }
 
-.add:hover{
+.add:hover {
     background-color: #913a1b;
 }
 
-.check{
+.check {
     color: #fff;
 }

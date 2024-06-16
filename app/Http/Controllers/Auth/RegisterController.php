@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Response;
 
 class RegisterController extends Controller
 {
@@ -81,7 +82,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => isset($data['role']) ? $data['role'] : 'user', // Asignar rol 'user' por defecto si no se especifica
+            'role' => isset($data['role']) ? $data['role'] : 'user', 
         ]);
     }
 }
