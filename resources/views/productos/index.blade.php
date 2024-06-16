@@ -102,6 +102,7 @@
                     <input type="text" name="variedad" placeholder="Variedad" required>
                     <input type="number" name="precio" placeholder="Precio">
                     <input type="number" name="stock" placeholder="Stock">
+                    <input name="descripcion" placeholder="Descripción del producto"></input>
                     <input type="file" name="Img" id="Img" accept="image/*">
                     <button type="submit" class="check">Agregar producto</button>
                 </form>
