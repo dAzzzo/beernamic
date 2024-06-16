@@ -117,14 +117,14 @@
 
 /* Estilo para la imagen y la sombra */
 .producto-detalles {
-  text-align: center; /* Centrar el contenido */
+  text-align: center;
 }
 
 .producto-detalles img {
-  width: 300px; /* Tamaño de la imagen */
-  animation: float 3s ease-in-out infinite; /* Animación de flotación */
+  width: 300px;
+  animation: float 3s ease-in-out infinite; 
   display: block;
-  margin: 0 auto; /* Centrar la imagen */
+  margin: 0 auto;
 }
 
 
@@ -132,10 +132,10 @@
 .producto-detalles .shadow {
   width: 40%;
   height: 20px;
-  background: rgba(0, 0, 0, 0.3); /* Color de la sombra */
-  border-radius: 50%; /* Hacer que la sombra sea un óvalo */
-  margin: 10px auto; /* Centrar la sombra */
-  animation: shadowFloat 3s ease-in-out infinite; /* Animación de flotación */
+  background: #0000004d; 
+  border-radius: 50%;
+  margin: 10px auto; 
+  animation: shadowFloat 3s ease-in-out infinite; 
 }
 
 @keyframes float {

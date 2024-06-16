@@ -68,7 +68,8 @@ nav a {
 }
 
 .user-panel:hover .options {
-  display: block; /* Muestra el menú al pasar el ratón sobre el botón */
+  display: block; 
+  /* Muestra el menú al pasar el ratón sobre el botón */
 }
 
 
