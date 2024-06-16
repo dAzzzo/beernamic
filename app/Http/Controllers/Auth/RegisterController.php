@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-
 class RegisterController extends Controller
 {
     use RegistersUsers;
@@ -43,16 +42,16 @@ class RegisterController extends Controller
         $validator = $this->validator($request->all());
 
         if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
+            return redirect()->back()
+                             ->withErrors($validator)
+                             ->withInput();
         }
 
         $user = $this->create($request->all());
         event(new Registered($user));
 
         return $this->registered($request, $user)
-                        ?: redirect()->route('verification.notice');
+                        ?: redirect($this->redirectPath());
     }
 
     /**
@@ -82,6 +81,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => isset($data['role']) ? $data['role'] : 'user', // Asignar rol 'user' por defecto si no se especifica
         ]);
     }
 }
