@@ -102,7 +102,7 @@
                     <input type="text" name="variedad" placeholder="Variedad" required>
                     <input type="number" name="precio" placeholder="Precio">
                     <input type="number" name="stock" placeholder="Stock">
-                    <input name="descripcion" placeholder="Descripción del producto"></input>
+                    <input type="text" name="Descripcion" placeholder="Descripción del producto">
                     <input type="file" name="Img" id="Img" accept="image/*">
                     <button type="submit" class="check">Agregar producto</button>
                 </form>
@@ -147,6 +147,9 @@
                             </div>
                             <div class="form-group">
                                 <input type="number" class="form-control" name="stock" value="{{ $producto->stock }}">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="descripcion" value="{{ $producto->Descripcion}}"> 
                             </div>
                             <button type="submit" class="btn btn-warning">Actualizar</button>
                         </form>

@@ -152,4 +152,27 @@ document.addEventListener("DOMContentLoaded", function() {
     hostedButtonId: "WA2BTYKW39N4N",
   }).render("#paypal-container-WA2BTYKW39N4N")
 
-  
+  document.addEventListener("DOMContentLoaded", function () {
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '10.00'  // Precio del producto
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                alert('Transaction completed by ' + details.payer.name.given_name);
+            });
+        },
+        style: {
+            layout: 'vertical',
+            color: 'blue',
+            shape: 'rect',
+            label: 'paypal'
+        }
+    }).render('#paypal-button-container');
+});

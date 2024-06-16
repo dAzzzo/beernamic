@@ -97,10 +97,17 @@
     <main>
         <div class="producto-detalles">
             <h1>{{ $producto->marca }} - {{ $producto->variedad }}</h1>
-            <div class="imagen-container">
-                 <img class="producto-imagen" src="{{ asset('img/cervezas/' . $producto->Img) }}" alt="Imagen de {{ $producto->marca }}">
-                 <div class="shadow"></div>
-            </div>
+            
+            @if (Storage::disk('public')->exists('img/cervezas/' . $producto->Img))
+                    <img class="producto-imagen" src="{{ asset('storage/img/cervezas/' . $producto->Img) }}"
+                        alt="Imagen de {{ $producto->marca }}">
+                        <div class="shadow"></div>
+                    @else
+                    <img class="producto-imagen" src="{{ asset('img/cervezas/' . $producto->Img) }}"
+                        alt="Imagen de {{ $producto->marca }}">
+                        <div class="shadow"></div>
+            @endif
+
             <p><strong>Precio:</strong> {{ $producto->precio }} €</p>
             <p><strong>Stock:</strong> {{ $producto->stock }}</p>
             <p><strong>Descripción:</strong> {{ $producto->Descripcion }}</p>

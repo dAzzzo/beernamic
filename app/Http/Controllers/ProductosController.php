@@ -82,6 +82,7 @@ class ProductosController extends Controller
             'precio' => 'required|numeric',
             'stock' => 'required|integer',
             'Img' => 'required|image',
+            'Descripcion' => 'required|string|max:225',
         ]);
 
 $imagePath = $request->Img->store('img/cervezas', 'public');
@@ -94,6 +95,7 @@ $imagePath = $request->Img->store('img/cervezas', 'public');
             'precio' => $request->precio,
             'stock' => $request->stock,
             'Img' => basename($url),
+            'Descripcion' => $request->Descripcion,
         ]);
 
         return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente.');
@@ -139,6 +141,7 @@ $imagePath = $request->Img->store('img/cervezas', 'public');
             'precio' => 'required|numeric',
             'stock' => 'required|integer',
             'Img' => 'sometimes|image',
+            'Descripcion' => 'required|string|max:225',
         ]);
 
         if ($request->hasFile('Img')) {
@@ -151,6 +154,7 @@ $imagePath = $request->Img->store('img/cervezas', 'public');
             'variedad' => $request->variedad,
             'precio' => $request->precio,
             'stock' => $request->stock,
+            'Descripcion' => $request->Descripcion,
         ]);
 
         return redirect()->route('productos.index')->with('success', 'Producto actualizado exitosamente.');
